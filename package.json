@@ -1,0 +1,23 @@
+{
+  "name": "webmessenger",
+  "version": "1.0.0",
+  "description": "Учебный проект курса middle frontend",
+  "scripts": {
+    "build": "parcel build index.hbs",
+    "dev": "parcel index.hbs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitalymuravyev/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "parcel": "^2.6.0"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
+}
