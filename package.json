@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Учебный проект курса middle frontend",
   "scripts": {
-    "build": "parcel build index.hbs",
-    "dev": "parcel index.hbs"
+    "dev": "parcel index.hbs",
+    "build": "parcel build index.hbs"
   },
   "repository": {
     "type": "git",
