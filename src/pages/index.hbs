@@ -1,0 +1,33 @@
+---
+{
+    title: 'Login',
+    stylesheet: [
+        '../components/styles/button.css',
+        '../components/styles/input.css',
+        '../components/styles/form_wrapper.css',
+        './css/index.css'
+    ],
+    formFields: [
+        {name: 'login', type: 'text', text: 'Логин'},
+        {name: 'password', type: 'password', text: 'Пароль'},
+    ]
+}
+---
+{{#extend 'layout'}}
+    {{#content 'main'}}
+        <main>
+            {{#extend 'form_wrapper'}}
+                {{#content 'form'}}
+                    <h1 class="form-header">Вход</h1>
+                    {{#each formFields}}
+                        {{> input name=this.name type=this.type text=this.text }}
+                    {{/each}}
+                <div class="button-wrapper">
+                    {{> button text="Вход"}}
+                    {{> link url="./singup.hbs" text="Ещё не зарегистрированы?"}}
+                </div>
+                {{/content}}
+            {{/extend}}
+        </main>
+    {{/content}}
+{{/extend}}

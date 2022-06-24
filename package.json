@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Учебный проект курса middle frontend",
   "scripts": {
-    "dev": "parcel index.hbs",
-    "build": "parcel build index.hbs"
+    "dev": "parcel src/pages/index.hbs",
+    "build": "parcel build src/pages/index.hbs"
   },
   "repository": {
     "type": "git",
@@ -15,9 +15,16 @@
   "license": "ISC",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "parcel": "^2.6.0"
+    "parcel": "^2.6.2",
+    "postcss": "^8.4.14",
+    "postcss-nested": "^5.0.6",
+    "postcss-normalize": "^10.0.1"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.7",
     "handlebars": "^4.7.7"
-  }
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }

@@ -1,0 +1,10 @@
+.main-button {
+    border-radius: 8px;
+    background: #3369F3;
+    border: none;
+    color: #FFFFFF;
+    font-size: 13px;
+    line-height: 13px;
+    padding: 12px;
+    cursor: pointer;
+}
