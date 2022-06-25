@@ -1,7 +1,7 @@
 .chat-preview {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    align-items: center;
+    align-items: flex-start;
 
     border-bottom: 1px solid #EAEAEA;
     padding: 12px 0;
@@ -31,6 +31,7 @@
     font-size: 12px;
     line-height: 15px;
     color: #999999;
+    margin-top: 4px;
 }
 
 .chat-preview__side-info {
@@ -38,6 +39,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 
 .chat-preview__time {

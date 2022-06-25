@@ -11,3 +11,48 @@
     border-right: 1px solid #EAEAEA;
     padding: 0 10px;
 }
+.sidebar-profile {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 20px;
+}
+
+.sidebar-profile a {
+    font-size: 12px;
+    line-height: 12px;
+
+    color: #999999;
+}
+
+.sidebar-search {
+    margin-top: 23px;
+}
+
+.sidebar-search input {
+    font-size: 12px;
+    line-height: 12px;
+    color: #999999;
+    padding: 10px;
+    background: #EFEFEF;
+
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar-search input:focus {
+    outline: none;
+}
+
+.chat-list {
+    margin-top: 14px;
+    border-top: 1px solid #EAEAEA;
+}
+
+.link-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

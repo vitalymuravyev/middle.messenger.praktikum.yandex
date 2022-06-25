@@ -19,12 +19,12 @@
             <div class="chat-container">
                 <div class="chat-sidebar">
                     <div class="sidebar-profile">
-                        <a href="#">Профиль ></a>
+                        <a href="./profile.hbs">Профиль ></a>
                     </div>
                     <div class="sidebar-search">
-                        <input type="input" name="search" placeholder="Поиск">
+                        <input type="text" name="search" placeholder="Поиск">
                     </div>
-                    <ul>
+                    <ul class="chat-list">
                         {{#each chats}}
                             <li>
                                 {{> chat_preview name=this.name text=this.text time=this.time unread_number=this.unread_number }}
@@ -32,7 +32,13 @@
                         {{/each}}
                     </ul>
                 </div>
-                <div></div>
+                <div>
+                    <h3>Пока здесь будут ссылки на другие страницы</h3>
+                    <div class="link-wrapper">
+                        {{> link url="./404.hbs" text="Page 404"}}
+                        {{> link url="./error.hbs" text="Page 500"}}
+                    </div>
+                </div>
             </div>
         </main>
     {{/content}}
