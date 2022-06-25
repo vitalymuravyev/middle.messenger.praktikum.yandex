@@ -1,0 +1,13 @@
+.chat-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.chat-sidebar {
+    background: #FBFBFB;
+    width: 310px;
+    height: 100vh;
+
+    border-right: 1px solid #EAEAEA;
+    padding: 0 10px;
+}

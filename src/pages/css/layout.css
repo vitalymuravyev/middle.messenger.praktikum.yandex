@@ -11,3 +11,9 @@ a {
     font-size: 11px;
     line-height: 11px;
 }
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
