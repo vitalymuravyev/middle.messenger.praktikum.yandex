@@ -12,3 +12,7 @@
     display: flex;
     flex-direction: column;
 }
+
+.button-wrapper > a {
+    margin-top: 14px;
+}

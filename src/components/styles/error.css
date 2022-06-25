@@ -1,0 +1,13 @@
+.error-wrapper {
+    text-align: center;
+}
+
+.error-number {
+    font-size: 40px;
+    line-height: 40px;
+}
+
+.error-text {
+    margin-top: 20px;
+    margin-bottom: 70px;
+}
