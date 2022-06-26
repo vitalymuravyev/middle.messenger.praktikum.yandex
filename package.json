@@ -4,7 +4,8 @@
   "description": "Учебный проект курса middle frontend",
   "scripts": {
     "dev": "parcel src/pages/index.hbs",
-    "build": "parcel build src/pages/index.hbs"
+    "build": "parcel build src/pages/index.hbs",
+    "start": "npm run build && node app.js"
   },
   "repository": {
     "type": "git",
@@ -22,9 +23,13 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.7",
+    "express": "^4.18.1",
     "handlebars": "^4.7.7"
   },
   "browserslist": [
     "last 2 versions"
-  ]
+  ],
+  "engines": {
+    "node": ">=12.0.0"
+  }
 }

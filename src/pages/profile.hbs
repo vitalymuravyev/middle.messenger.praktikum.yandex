@@ -14,7 +14,7 @@
         login: ivanivanov,
         name: Иван,
         second_name: Иванов,
-        nickname: Иван,
+        display_name: Иван,
         phone: +7 (909) 967 30 30,
     }
 }
@@ -31,7 +31,7 @@
                         <li class="profile-data-item">{{> user_info_item name="Логин" data=user.login}}</li>
                         <li class="profile-data-item">{{> user_info_item name="Имя" data=user.name}}</li>
                         <li class="profile-data-item">{{> user_info_item name="Фамилия" data=user.second_name}}</li>
-                        <li class="profile-data-item">{{> user_info_item name="Имя в чате" data=user.nickname}}</li>
+                        <li class="profile-data-item">{{> user_info_item name="Имя в чате" data=user.display_name}}</li>
                         <li class="profile-data-item">{{> user_info_item name="Телефон" data=user.phone}}</li>
                     </ul>
                     <div class="profile-actions">
