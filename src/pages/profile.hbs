@@ -1,0 +1,46 @@
+---
+{
+    title: 'Profile',
+    stylesheet: [
+        '../components/styles/button.css',
+        '../components/styles/input.css',
+        '../components/styles/user_info_item.css',
+        '../components/styles/link.css',
+        './css/index.css',
+        './css/profile.css'
+    ],
+    user: {
+        email: pochta@yandex.ru,
+        login: ivanivanov,
+        name: Иван,
+        second_name: Иванов,
+        nickname: Иван,
+        phone: +7 (909) 967 30 30,
+    }
+}
+---
+{{#extend 'layout'}}
+    {{#content 'main'}}
+        <main>
+            <div class="profile-wrapper">
+                <div class="profile-avatar"></div>
+                <p class="profile-name">{{user.name}}</p>
+                <div class="profile-data">
+                    <ul class="profile-data_list">
+                        <li class="profile-data-item">{{> user_info_item name="Почта" data=user.email}}</li>
+                        <li class="profile-data-item">{{> user_info_item name="Логин" data=user.login}}</li>
+                        <li class="profile-data-item">{{> user_info_item name="Имя" data=user.name}}</li>
+                        <li class="profile-data-item">{{> user_info_item name="Фамилия" data=user.second_name}}</li>
+                        <li class="profile-data-item">{{> user_info_item name="Имя в чате" data=user.nickname}}</li>
+                        <li class="profile-data-item">{{> user_info_item name="Телефон" data=user.phone}}</li>
+                    </ul>
+                    <div class="profile-actions">
+                        {{> link url="#" text="Изменить данные"}}
+                        {{> link url="#" text="Изменить пароль"}}
+                        {{> link url="./index.hbs" text="Выйти" className="red"}}
+                    </div>
+                </div>
+            </div>
+        </main>
+    {{/content}}
+{{/extend}}
