@@ -1,8 +1,8 @@
 .main-button {
     border-radius: 8px;
-    background: #3369F3;
+    background: var(--light-blue);
     border: none;
-    color: #FFFFFF;
+    color: var(--white);
     font-size: 13px;
     line-height: 13px;
     padding: 12px;

@@ -4,11 +4,11 @@
 }
 
 .chat-sidebar {
-    background: #FBFBFB;
+    background: var(--sidebar-background);
     width: 310px;
     height: 100vh;
 
-    border-right: 1px solid #EAEAEA;
+    border-right: 1px solid var(--separator-color);
     padding: 0 10px;
 }
 .sidebar-profile {
@@ -17,11 +17,11 @@
     margin-top: 20px;
 }
 
-.sidebar-profile a {
+.sidebar-profile_link {
     font-size: 12px;
     line-height: 12px;
 
-    color: #999999;
+    color: var(--gray-text);
 }
 
 .sidebar-search {
@@ -31,9 +31,9 @@
 .sidebar-search input {
     font-size: 12px;
     line-height: 12px;
-    color: #999999;
+    color: var(--gray-text);
     padding: 10px;
-    background: #EFEFEF;
+    background: var(--light-gray);
 
     border: none;
     border-radius: 5px;
@@ -47,7 +47,7 @@
 
 .chat-list {
     margin-top: 14px;
-    border-top: 1px solid #EAEAEA;
+    border-top: 1px solid var(--separator-color);
 }
 
 .link-wrapper {

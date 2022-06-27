@@ -6,7 +6,7 @@
 .input-field {
     width: 100%;
     border: none;
-    border-bottom: 1px solid #3369F3;
+    border-bottom: 1px solid var(--light-blue);
     font-size: 13px;
     line-height: 13px;
     padding: 7px 0;
@@ -20,7 +20,7 @@
     position: absolute;
     left: 20px;
     top: 5px;
-    color: #999999;
+    color: var(--gray-text);
 }
 
 .input-field:focus ~ .input-label,

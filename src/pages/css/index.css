@@ -13,6 +13,6 @@
     flex-direction: column;
 }
 
-.button-wrapper > a {
+.link-button {
     margin-top: 14px;
 }

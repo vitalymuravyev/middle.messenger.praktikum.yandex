@@ -1,4 +1,13 @@
 /*@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap');*/
+:root {
+    --separator-color: #EAEAEA;
+    --light-blue: #3369F3;
+    --white: #FFF;
+    --gray-text: #999;
+    --sidebar-background: #FBFBFB;
+    --light-gray: #EFEFEF;
+    --red: #FF0000;
+}
 
 body {
     font-family: 'Inter', sans-serif;
@@ -6,7 +15,7 @@ body {
 
 a {
     text-decoration: none;
-    color: #3369F3;
+    color: var(--light-blue);
     text-align: center;
     font-size: 11px;
     line-height: 11px;

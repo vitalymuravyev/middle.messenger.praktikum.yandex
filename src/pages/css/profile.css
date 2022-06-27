@@ -9,7 +9,7 @@
 .profile-avatar {
     width: 137px;
     height: 137px;
-    background: #EFEFEF;
+    background: var(--light-gray);
     border-radius: 50%;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .profile-data-item:not(:last-child) {
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid var(--separator-color);
 }
 
 .profile-data-item {
@@ -42,7 +42,7 @@
     align-items: flex-start;
 }
 
-.profile-actions > a {
+.profile-actions_item {
     font-size: 13px;
     line-height: 13px;
 
@@ -51,6 +51,10 @@
     text-align: left;
 }
 
-.profile-actions > a:not(:last-child) {
-    border-bottom: 1px solid #EAEAEA;
+.profile-actions_item:not(:last-child) {
+    border-bottom: 1px solid var(--separator-color);
+}
+
+.profile-actions_item:last-child {
+    color: var(--red);
 }

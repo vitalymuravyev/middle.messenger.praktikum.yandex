@@ -11,5 +11,5 @@
 }
 
 .user-info-data {
-    color: #999999;
+    color: var(--gray-text);
 }

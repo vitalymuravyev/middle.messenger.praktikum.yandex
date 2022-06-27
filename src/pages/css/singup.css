@@ -2,9 +2,7 @@
     text-align: center;
     font-size: 20px;
     line-height: 20px;
-    margin: 0;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin: 20px 0 40px;
 }
 
 .button-wrapper {
@@ -14,6 +12,6 @@
     flex-direction: column;
 }
 
-.button-wrapper > a {
+.link-button {
     margin-top: 14px;
 }

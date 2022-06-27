@@ -3,7 +3,7 @@
     grid-template-columns: auto 1fr auto;
     align-items: flex-start;
 
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid var(--separator-color);
     padding: 12px 0;
 }
 
@@ -16,7 +16,7 @@
     width: 47px;
     height: 47px;
     border-radius: 50%;
-    background: #EFEFEF;
+    background: var(--light-gray);
 
     margin-right: 10px;
 }
@@ -30,7 +30,7 @@
 .chat-preview__text {
     font-size: 12px;
     line-height: 15px;
-    color: #999999;
+    color: var(--gray-text);
     margin-top: 4px;
 }
 
@@ -46,11 +46,11 @@
     font-size: 9px;
     line-height: 13px;
 
-    color: #999999;
+    color: var(--gray-text);
 }
 
 .chat-preview__unread {
-    background: #3369F3;
+    background: var(--light-blue);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,8 +59,8 @@
     border-radius: 50%;
 }
 
-.chat-preview__unread > span {
+.chat-preview__unread-number {
     font-size: 11px;
     line-height: 12px;
-    color: #FFFFFF;
+    color: var(--white);
 }
