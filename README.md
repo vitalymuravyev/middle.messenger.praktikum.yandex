@@ -10,3 +10,5 @@
 Деплой на Netlify: https://cozy-swan-775386.netlify.app/
 
 По заданию первого спринта только верстка
+
+Ссылка на ПР спринта 1: https://github.com/vitalymuravyev/middle.messenger.praktikum.yandex/pull/1
