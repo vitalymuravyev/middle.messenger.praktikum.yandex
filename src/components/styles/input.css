@@ -1,6 +1,6 @@
 .input-wrapper {
     position: relative;
-    padding: 0 20px;
+    padding: 10px 20px;
 }
 
 .input-field {
@@ -18,14 +18,23 @@
 
 .input-label {
     position: absolute;
+    font-size: 13px;
+    line-height: 13px;
     left: 20px;
-    top: 5px;
+    top: 0px;
     color: var(--gray-text);
 }
 
-.input-field:focus ~ .input-label,
-.input-field:not(:placeholder-shown) ~ .input-label {
-    font-size: 9px;
-    line-height: 9px;
-    transform: translateY(-30px);
-}
+/*пока откл. Лейбл или не реагирует или смещается, но возвращается*/
+
+/*.input-field:not(:placeholder-shown) + .input-label {*/
+/*    font-size: 9px;*/
+/*    line-height: 9px;*/
+/*    transform: translateY(-10px);*/
+/*}*/
+
+/*.input-field:focus + .input-label {*/
+/*    font-size: 9px;*/
+/*    line-height: 9px;*/
+/*    transform: translateY(-10px);*/
+/*}*/
