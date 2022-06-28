@@ -1,0 +1,18 @@
+.form-header {
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.button-wrapper {
+    margin-top: 160px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.link-button {
+    margin-top: 14px;
+}

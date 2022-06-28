@@ -1,0 +1,38 @@
+---
+{
+    title: 'Sing up',
+    stylesheet: [
+    '../components/styles/button.css',
+    '../components/styles/input.css',
+    '../components/styles/form_wrapper.css',
+    './css/singup.css'
+    ],
+formFields: [
+    {name: 'email', type: 'email', text: 'Почта'},
+    {name: 'login', type: 'text', text: 'Логин'},
+    {name: 'first_name', type: 'text', text: 'Имя'},
+    {name: 'second_name', type: 'text', text: 'Фамилия'},
+    {name: 'phone', type: 'tel', text: 'Телефон'},
+    {name: 'password', type: 'password', text: 'Пароль'},
+    {name: 'password2', type: 'password', text: 'Пароль (ещё раз)'},
+]
+}
+---
+{{#extend 'layout'}}
+    {{#content 'main'}}
+        <main>
+            {{#extend 'form_wrapper'}}
+                {{#content 'form'}}
+                    <h1 class="form-header">Создать аккаунт</h1>
+                    {{#each formFields}}
+                        {{> input name=this.name type=this.type text=this.text }}
+                    {{/each}}
+                    <div class="button-wrapper">
+                        {{> button text="Создать аккаунт"}}
+                        {{> link className="link-button" url="./chat.hbs" text="Войти"}}
+                    </div>
+                {{/content}}
+            {{/extend}}
+        </main>
+    {{/content}}
+{{/extend}}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        {{#block 'title'}}
+            <title>My chart - {{title}}</title>
+        {{/block}}
+        <link rel="stylesheet" href="./css/layout.css">
+        {{#block 'css'}}
+            {{#each stylesheet}}
+                <link rel="stylesheet" href="{{this}}">
+            {{/each}}
+        {{/block}}
+    </head>
+
+    <body>
+        {{#block 'main'}}{{/block}}
+    </body>
+
+</html>
