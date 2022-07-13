@@ -2,6 +2,20 @@ import Block from '../../core/Block';
 import template from './chat.hbs';
 import * as styles from './chat.css';
 import { Link } from '../../components/Link/Link';
+import renderDom from '../../core/renderDom';
+import { Error, ErrorPage } from '../error/error';
+
+const err404: ErrorPage = {
+  number: 404,
+  text: 'Не туда попали',
+  link_text: 'Назад к чатам',
+}
+
+const err500: ErrorPage = {
+  number: 500,
+  text: 'Мы уже фиксим',
+  link_text: 'Назад в будущее'
+}
 
 export class Chat extends Block {
   constructor() {
@@ -15,7 +29,7 @@ export class Chat extends Block {
       events: {
         click: (e) => {
           e.preventDefault()
-          // renderDom('#app', new Singup())
+          renderDom('#app', new Error(err404))
         },
       },
     });
@@ -26,7 +40,7 @@ export class Chat extends Block {
       events: {
         click: (e) => {
           e.preventDefault()
-          // renderDom('#app', new Singup())
+          renderDom('#app', new Error(err500))
         },
       },
     })
