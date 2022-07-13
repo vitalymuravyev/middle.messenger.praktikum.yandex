@@ -7,6 +7,7 @@ import { Input } from '../../components/Input/Input';
 import { Link } from '../../components/Link/Link';
 import renderDom from '../../core/renderDom';
 import { Singup } from '../singup/Singup';
+import { Chat } from '../chat/chat';
 
 export class Auth extends Block {
   constructor() {
@@ -26,17 +27,17 @@ export class Auth extends Block {
       text: 'Пароль'
     });
 
-    this.children.enterbutton = new Button({
+    this.children.buttonEnter = new Button({
       text: "Вход",
       events: {
         click: (e) => {
           e.preventDefault()
-          // renderDom('#app', new Singup())
+          renderDom('#app', new Chat())
         },
       },
     });
 
-    this.children.singupLink = new Link({
+    this.children.linkSingup = new Link({
       text: 'Ещё не зарегистрированы?',
       className: 'link-button',
       events: {
