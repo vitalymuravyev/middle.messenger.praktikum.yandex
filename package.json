@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Учебный проект курса middle frontend",
   "scripts": {
-    "dev": "parcel src/pages/index.hbs",
+    "dev": "parcel src/index.html",
     "build": "parcel build src/pages/index.hbs",
     "start": "npm run build && node app.js"
   },
@@ -16,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
     "eslint": "^8.19.0",
@@ -29,9 +30,12 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "@parcel/resolver-glob": "2.3.1",
     "autoprefixer": "^10.4.7",
     "express": "^4.18.1",
-    "handlebars": "^4.7.7"
+    "handlebars": "^4.7.7",
+    "parcel-plugin-handlebars": "^0.4.4",
+    "uuid": "^8.3.2"
   },
   "browserslist": [
     "last 2 versions"
