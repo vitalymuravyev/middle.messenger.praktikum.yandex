@@ -24,7 +24,7 @@ export default class Block {
     console.log('props', props)
     this.children = children;
 
-    this.initChildren();
+    this.initChildren(props);
     this._meta = { props };
     console.log(this.children)
     this.props = this._makePropsProxy(props);
@@ -181,5 +181,5 @@ export default class Block {
     return <HTMLElement>this.element;
   }
 
-  protected initChildren() {}
+  protected initChildren(props = {}) {}
 }

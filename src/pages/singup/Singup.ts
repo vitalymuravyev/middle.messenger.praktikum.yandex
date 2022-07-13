@@ -6,6 +6,16 @@ import { Button } from '../../components/Button/Button';
 import renderDom from '../../core/renderDom';
 import { Link } from '../../components/Link/Link';
 import { Auth } from '../auth/auth';
+import { Profile, User } from '../profile/profile';
+
+const mockUser: User = {
+  email: 'pochta@yandex.ru',
+  login: 'ivanivanov',
+  name: 'Иван',
+  second_name: 'Иванов',
+  display_name: 'Иван',
+  phone: '+7 (909) 967 30 30',
+}
 
 export class Singup extends Block {
   constructor() {
@@ -60,7 +70,7 @@ export class Singup extends Block {
       events: {
         click: (e) => {
           e.preventDefault()
-          // renderDom('#app', new Singup())
+          renderDom('#app', new Profile({ user: mockUser }))
         },
       },
     });
