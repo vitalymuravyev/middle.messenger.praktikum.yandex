@@ -4,7 +4,7 @@ import * as styles from './input.css';
 
 interface Props {
   name: string;
-  type: 'text' | 'password';
+  type: 'text' | 'password' | 'email' | 'tel';
   text: string;
   events?: {
     blur?: () => void;

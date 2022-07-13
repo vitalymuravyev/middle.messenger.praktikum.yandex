@@ -5,6 +5,8 @@ import Block from "../../core/Block";
 import * as styles from "./auth.css";
 import { Input } from '../../components/Input/Input';
 import { Link } from '../../components/Link/Link';
+import renderDom from '../../core/renderDom';
+import { Singup } from '../singup/Singup';
 
 export class Auth extends Block {
   constructor() {
@@ -27,16 +29,22 @@ export class Auth extends Block {
     this.children.enterbutton = new Button({
       text: "Вход",
       events: {
-        click: () => {
-          console.log('dsfsa')
+        click: (e) => {
+          e.preventDefault()
+          // renderDom('#app', new Singup())
         },
       },
     });
 
     this.children.singupLink = new Link({
-      url: '../singup/singup.html',
       text: 'Ещё не зарегистрированы?',
       className: 'link-button',
+      events: {
+        click: (e) => {
+          e.preventDefault()
+          renderDom('#app', new Singup())
+        },
+      },
     })
   }
 

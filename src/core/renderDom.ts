@@ -7,6 +7,8 @@ const renderDom = (selector: string, component: Block) => {
     throw new Error('Селектор не найден')
   }
 
+  root.innerHTML = '';
+
   root.append(component.getContent());
 }
 
