@@ -1,0 +1,9 @@
+.input-label {
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--gray-text);
+}
+
+.input-label:not(:first-child) {
+    margin-top: 10px;
+}

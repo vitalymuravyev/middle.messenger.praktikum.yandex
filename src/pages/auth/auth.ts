@@ -9,6 +9,7 @@ import renderDom from '../../core/renderDom';
 import { Singup } from '../singup';
 import { Chat } from '../chat';
 import { logFormData } from '../../utils/logFormData';
+import { Label } from '../../components/Label';
 
 export class Auth extends Block {
   constructor() {
@@ -22,9 +23,19 @@ export class Auth extends Block {
       text: 'Логин',
     });
 
+    this.children.labelLogin = new Label({
+      name: 'login',
+      text: 'Логин',
+    });
+
     this.children.inputPassword = new Input({
       name: 'password',
       type: 'password',
+      text: 'Пароль',
+    });
+
+    this.children.labelPassword = new Label({
+      name: 'password',
       text: 'Пароль',
     });
 

@@ -1,8 +1,5 @@
-.message-input-label {
-    width: calc(100% - 40px);
-}
-
-.message-input {
+input.message-input-label,
+input.sidebar-search {
     padding: 10px;
     font-size: 12px;
     line-height: 12px;
@@ -12,15 +9,16 @@
     width: 100%;
 }
 
-.message-input:focus {
+input:focus {
     outline: none;
+}
+
+.message-input-label {
+    margin-right: 15px;
 }
 
 .sidebar-search {
   margin-top: 23px;
   display: block;
-}
-
-.sidebar-search .message-input {
-    text-align: center;
+  text-align: center;
 }
