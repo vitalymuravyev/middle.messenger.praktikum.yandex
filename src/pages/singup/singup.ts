@@ -8,6 +8,7 @@ import { Link } from '../../components/Link';
 import { Auth } from '../auth';
 import { Profile } from '../profile';
 import { mockUser } from '../../mock/user';
+import { logFormData } from '../../utils/logFormData';
 
 export class Singup extends Block {
   constructor() {
@@ -61,7 +62,8 @@ export class Singup extends Block {
       text: "Создать аккаунт",
       events: {
         click: (e) => {
-          e.preventDefault()
+          e.preventDefault();
+          logFormData('.form-wrapper');
           renderDom('#app', new Profile({ user: mockUser }))
         },
       },

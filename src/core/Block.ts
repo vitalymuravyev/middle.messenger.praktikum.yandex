@@ -21,12 +21,11 @@ export default class Block {
     const eventBus = new EventBus();
 
     const { props, children } = this.getPropsAndChildren(propsAndChildren);
-    console.log('props', props)
     this.children = children;
 
     this.initChildren(props);
     this._meta = { props };
-    console.log(this.children)
+
     this.props = this._makePropsProxy(props);
     this.eventBus = () => eventBus;
 
@@ -155,8 +154,6 @@ export default class Block {
 
     fragment.innerHTML = template(props);
 
-    console.log(fragment)
-
     Object.values(this.children).forEach((child: Block) => {
       const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
 
@@ -175,7 +172,6 @@ export default class Block {
   }
 
   getContent(): HTMLElement {
-    console.log(this.element)
     return <HTMLElement>this.element;
   }
 

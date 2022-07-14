@@ -4,7 +4,7 @@
   "description": "Учебный проект курса middle frontend",
   "scripts": {
     "dev": "parcel src/index.html",
-    "build": "parcel build src/pages/index.hbs",
+    "build": "parcel build src/index.html",
     "start": "npm run build && node app.js"
   },
   "repository": {

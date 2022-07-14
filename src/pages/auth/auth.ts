@@ -8,6 +8,7 @@ import { Link } from '../../components/Link';
 import renderDom from '../../core/renderDom';
 import { Singup } from '../singup';
 import { Chat } from '../chat';
+import { logFormData } from '../../utils/logFormData';
 
 export class Auth extends Block {
   constructor() {
@@ -18,13 +19,13 @@ export class Auth extends Block {
     this.children.inputLogin = new Input({
       name: 'login',
       type: 'text',
-      text: 'Логин'
+      text: 'Логин',
     });
 
     this.children.inputPassword = new Input({
       name: 'password',
       type: 'password',
-      text: 'Пароль'
+      text: 'Пароль',
     });
 
     this.children.buttonEnter = new Button({
@@ -32,6 +33,7 @@ export class Auth extends Block {
       events: {
         click: (e) => {
           e.preventDefault()
+          logFormData('.form-wrapper')
           renderDom('#app', new Chat())
         },
       },
