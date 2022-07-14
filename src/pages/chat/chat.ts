@@ -1,12 +1,12 @@
 import Block from '../../core/Block';
 import template from './chat.hbs';
 import * as styles from './chat.css';
-import { Link } from '../../components/Link/Link';
+import { Link } from '../../components/Link';
 import renderDom from '../../core/renderDom';
 import { Error, ErrorPage } from '../error/error';
 import { chatsMock } from '../../mock/chats';
-import { ChatPreview } from '../../components/ChatPreview/ChatPreview';
-import { ChatInput } from '../../components/ChatInput/ChatInput';
+import { ChatPreview } from '../../components/ChatPreview';
+import { ChatInput } from '../../components/ChatInput';
 
 const err404: ErrorPage = {
   number: 404,

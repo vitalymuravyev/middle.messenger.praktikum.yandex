@@ -1,10 +1,10 @@
 import Block from '../../core/Block';
 import template from './profile.hbs';
 import * as styles from './profile.css';
-import { Link } from '../../components/Link/Link';
+import { Link } from '../../components/Link';
 import renderDom from '../../core/renderDom';
-import { Auth } from '../auth/auth';
-import { UserInfoItem } from '../../components/UserInfoItem/UserInfoItem';
+import { Auth } from '../auth';
+import { UserInfoItem } from '../../components/UserInfoItem';
 
 export interface User {
   email: string;

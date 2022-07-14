@@ -1,12 +1,12 @@
 import Block from '../../core/Block';
 import template from './singup.hbs';
 import * as styles from './singup.css';
-import { Input } from '../../components/Input/Input';
-import { Button } from '../../components/Button/Button';
+import { Input } from '../../components/Input';
+import { Button } from '../../components/Button';
 import renderDom from '../../core/renderDom';
-import { Link } from '../../components/Link/Link';
-import { Auth } from '../auth/auth';
-import { Profile } from '../profile/profile';
+import { Link } from '../../components/Link';
+import { Auth } from '../auth';
+import { Profile } from '../profile';
 import { mockUser } from '../../mock/user';
 
 export class Singup extends Block {

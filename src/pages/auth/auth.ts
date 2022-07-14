@@ -1,13 +1,13 @@
 import template from "./auth.hbs";
-import { Button } from "../../components/Button/Button";
+import { Button } from "../../components/Button";
 import Block from "../../core/Block";
 
 import * as styles from "./auth.css";
-import { Input } from '../../components/Input/Input';
-import { Link } from '../../components/Link/Link';
+import { Input } from '../../components/Input';
+import { Link } from '../../components/Link';
 import renderDom from '../../core/renderDom';
-import { Singup } from '../singup/Singup';
-import { Chat } from '../chat/chat';
+import { Singup } from '../singup';
+import { Chat } from '../chat';
 
 export class Auth extends Block {
   constructor() {

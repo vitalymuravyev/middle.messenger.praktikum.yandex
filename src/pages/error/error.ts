@@ -1,7 +1,7 @@
 import Block from '../../core/Block';
 import template from './error.hbs';
 import * as styles from './error.css';
-import { Link } from '../../components/Link/Link';
+import { Link } from '../../components/Link';
 
 export interface ErrorPage {
   number: number;
