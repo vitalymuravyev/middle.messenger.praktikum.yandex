@@ -11,11 +11,11 @@ export default class Block {
   };
 
   private _element: HTMLElement | null = null;
-  private _meta: any;
+  protected _meta: any;
   private eventBus: () => EventBus;
   props: any;
   children: any;
-  id = uuidv4(5);
+  id = uuidv4();
 
   protected constructor(propsAndChildren = {}) {
     const eventBus = new EventBus();
@@ -89,7 +89,7 @@ export default class Block {
   private _componentDidMount() {
     this.componentDidMount();
 
-    Object.values(this.children).forEach(child => {
+    Object.values(this.children).forEach((child: Block) => {
       child.dispatchComponentDidMount();
     });
   }
@@ -107,11 +107,11 @@ export default class Block {
     this._render()
   }
 
-  componentDidUpdate(oldProps, newProps) {
+  componentDidUpdate(_oldProps: any, _newProps: any) {
     return true
   }
 
-  setProps = nextProps => {
+  setProps = (nextProps: any) => {
     if (!nextProps) return;
 
     Object.assign(this.props, nextProps)
@@ -143,10 +143,8 @@ export default class Block {
     Object.keys(events).forEach(event => this._element?.addEventListener(event, events[event]))
   }
 
-  compile(template, props) {
-
-    console.log(this.children)
-    Object.entries(this.children).forEach(([key, child]) => {
+  compile(template: (pr: any) => string, props: any): DocumentFragment {
+    Object.entries(this.children).forEach(([key, child]: [string, Block]) => {
       if (Array.isArray(child)) {
         props[key] = child.map(item => `<div data-id="${item.id}"></div>`)
       }
@@ -159,7 +157,7 @@ export default class Block {
 
     console.log(fragment)
 
-    Object.values(this.children).forEach(child => {
+    Object.values(this.children).forEach((child: Block) => {
       const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
 
       stub && stub.replaceWith(child.getContent());
@@ -181,5 +179,7 @@ export default class Block {
     return <HTMLElement>this.element;
   }
 
-  protected initChildren(props = {}) {}
+  protected initChildren(props = {}) {
+    this.props = props;
+  }
 }

@@ -4,6 +4,9 @@ import * as styles from './chat.css';
 import { Link } from '../../components/Link/Link';
 import renderDom from '../../core/renderDom';
 import { Error, ErrorPage } from '../error/error';
+import { chatsMock } from '../../mock/chats';
+import { ChatPreview } from '../../components/ChatPreview/ChatPreview';
+import { ChatInput } from '../../components/ChatInput/ChatInput';
 
 const err404: ErrorPage = {
   number: 404,
@@ -23,6 +26,11 @@ export class Chat extends Block {
   }
 
   protected initChildren() {
+    this.children.chat1 = new ChatPreview(chatsMock[0]);
+    this.children.chat2 = new ChatPreview(chatsMock[1]);
+    this.children.chat3 = new ChatPreview(chatsMock[2]);
+    this.children.chat4 = new ChatPreview(chatsMock[3]);
+
     this.children.link404 = new Link({
       text: 'Page 404',
       className: 'link-button',
@@ -43,6 +51,20 @@ export class Chat extends Block {
           renderDom('#app', new Error(err500))
         },
       },
+    })
+
+    this.children.inputSearch = new ChatInput({
+      name: 'search',
+      placeholder: 'Поиск',
+      autocomplete: 'on',
+      className: 'sidebar-search'
+    });
+
+    this.children.inputMessage = new ChatInput({
+      name: 'message',
+      placeholder: 'Введите текст',
+      autocomplete: 'off',
+      className: 'message-input-label'
     })
   }
 

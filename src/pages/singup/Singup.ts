@@ -6,16 +6,8 @@ import { Button } from '../../components/Button/Button';
 import renderDom from '../../core/renderDom';
 import { Link } from '../../components/Link/Link';
 import { Auth } from '../auth/auth';
-import { Profile, User } from '../profile/profile';
-
-const mockUser: User = {
-  email: 'pochta@yandex.ru',
-  login: 'ivanivanov',
-  name: 'Иван',
-  second_name: 'Иванов',
-  display_name: 'Иван',
-  phone: '+7 (909) 967 30 30',
-}
+import { Profile } from '../profile/profile';
+import { mockUser } from '../../mock/user';
 
 export class Singup extends Block {
   constructor() {

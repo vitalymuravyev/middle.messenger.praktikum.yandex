@@ -1,0 +1,26 @@
+.message-input-label {
+    width: calc(100% - 40px);
+}
+
+.message-input {
+    padding: 10px;
+    font-size: 12px;
+    line-height: 12px;
+    border-radius: 16px;
+    border: none;
+    background: var(--light-gray);
+    width: 100%;
+}
+
+.message-input:focus {
+    outline: none;
+}
+
+.sidebar-search {
+  margin-top: 23px;
+  display: block;
+}
+
+.sidebar-search .message-input {
+    text-align: center;
+}
