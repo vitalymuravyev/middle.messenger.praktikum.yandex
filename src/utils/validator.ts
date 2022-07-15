@@ -1,6 +1,6 @@
 type TRule = 'login' | 'password' | 'email' | 'phone' | 'name';
 
-export const validationRules: Record<string, { rule: RegExp, error: string }> = {
+export const validationRules: Record<TRule, { rule: RegExp, error: string }> = {
   login: {
     rule: /^[0-9a-zA-Z\-_]{3,20}/,
     error: 'от 3 до 20 символов, латиница, цифры, допустимы дефис и нижнее подчёркивание',

@@ -1,5 +1,5 @@
-import EventBus from './EventBus';
 import { v4 as uuidv4 } from 'uuid';
+import EventBus from './EventBus';
 
 export default class Block {
   static EVENTS = {
@@ -11,13 +11,18 @@ export default class Block {
   };
 
   private _element: HTMLElement | null = null;
+
   protected _meta: any;
+
   private eventBus: () => EventBus;
+
   props: any;
+
   children: any;
+
   id = uuidv4();
 
-  protected constructor(propsAndChildren = {}) {
+  constructor(propsAndChildren = {}) {
     const eventBus = new EventBus();
 
     const { props, children } = this.getPropsAndChildren(propsAndChildren);
@@ -40,12 +45,12 @@ export default class Block {
     Object.entries(propsAndChildren).map(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
-      } else if (Array.isArray(value) && value.every(i => i instanceof Block)) {
-        children[key] = value
+      } else if (Array.isArray(value) && value.every((i) => i instanceof Block)) {
+        children[key] = value;
       } else {
         props[key] = value;
       }
-    })
+    });
 
     return { props, children };
   }
@@ -68,21 +73,21 @@ export default class Block {
         return typeof value === 'function' ? value.bind(target) : value;
       },
 
-      set(target, prop, value) {
+      set(target: any, prop, value) {
         target[prop] = value;
 
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
-        return true
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+        return true;
       },
 
       deleteProperty() {
         throw new Error('Нет доступа');
-      }
-    })
+      },
+    });
   }
 
   init() {
-    this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
+    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
   private _componentDidMount() {
@@ -93,28 +98,29 @@ export default class Block {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   componentDidMount() {}
 
   dispatchComponentDidMount() {
-    this.eventBus().emit(Block.EVENTS.FLOW_CDM)
+    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
   private _componentDidUpdate(odlProps: any, newProps: any) {
     const response = this.componentDidUpdate(odlProps, newProps);
     if (!response) return;
 
-    this._render()
+    this._render();
   }
 
   componentDidUpdate(_oldProps: any, _newProps: any) {
-    return true
+    return true;
   }
 
   setProps = (nextProps: any) => {
     if (!nextProps) return;
 
-    Object.assign(this.props, nextProps)
-  }
+    Object.assign(this.props, nextProps);
+  };
 
   private _render() {
     const block = this.render();
@@ -139,15 +145,15 @@ export default class Block {
 
     if (!events) return;
 
-    Object.keys(events).forEach(event => this._element?.addEventListener(event, events[event]))
+    Object.keys(events).forEach((event) => this._element?.addEventListener(event, events[event]));
   }
 
   compile(template: (pr: any) => string, props: any): DocumentFragment {
     Object.entries(this.children).forEach(([key, child]: [string, Block]) => {
       if (Array.isArray(child)) {
-        props[key] = child.map(item => `<div data-id="${item.id}"></div>`)
+        props[key] = child.map((item) => `<div data-id="${item.id}"></div>`);
       }
-      props[key] = `<div data-id="${child.id}"></div>`
+      props[key] = `<div data-id="${child.id}"></div>`;
     });
 
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
@@ -155,9 +161,9 @@ export default class Block {
     fragment.innerHTML = template(props);
 
     Object.values(this.children).forEach((child: Block) => {
-      const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
+      const stub = fragment.content.querySelector(`[data-id="${child.id}"]`) as HTMLElement;
 
-      stub && stub.replaceWith(child.getContent());
+      stub.replaceWith(child.getContent());
     });
 
     return fragment.content;
@@ -172,7 +178,7 @@ export default class Block {
   }
 
   getContent(): HTMLElement {
-    return <HTMLElement>this.element;
+    return <HTMLElement> this.element;
   }
 
   protected initChildren(props = {}) {

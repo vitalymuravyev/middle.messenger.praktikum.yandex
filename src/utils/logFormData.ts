@@ -6,11 +6,13 @@ export const logFormData = (selector: string): void => {
   }
   const formData = new FormData(form);
 
-  let data: Record<string, string> = {};
-  for (let [key, value] of formData.entries()) {
-    if (typeof value === "string") {
+  const data: Record<string, string> = {};
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [key, value] of formData.entries()) {
+    if (typeof value === 'string') {
       data[key] = value;
     }
   }
-  console.log(data)
-}
+  console.log(data);
+};

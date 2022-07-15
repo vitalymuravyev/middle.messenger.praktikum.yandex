@@ -2,10 +2,12 @@
   "extends": [
     "airbnb",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "import"],
+  "plugins": ["@typescript-eslint", "import", "jsx-a11y"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -33,6 +35,12 @@
         "optionalDependencies": false,
         "peerDependencies": false
       }
-    ]
+    ],
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off",
+    "array-callback-return": "off",
+    "@typescript-eslint/no-this-alias": ["off", {}],
+    "no-useless-constructor": "warn",
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["target", "props"] }]
   }
 }

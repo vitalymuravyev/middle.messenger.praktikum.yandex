@@ -15,10 +15,10 @@
       "dom.iterable"
     ],
     "paths": {
-      "@components/*": ["components/*"],
-      "@core/*": ["core/*"],
-      "@pages/*": ["pages/*"],
-      "@utils/*": ["utils/*"],
+      "@components/*": ["./components/*"],
+      "@core/*": ["./core/*"],
+      "@pages/*": ["./pages/*"],
+      "@utils/*": ["./utils/*"],
     }
   }
 }

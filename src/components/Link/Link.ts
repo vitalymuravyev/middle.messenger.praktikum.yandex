@@ -17,6 +17,6 @@ export class Link extends Block {
   }
 
   render(): DocumentFragment {
-    return this.compile(template, {...this.props, styles});
+    return this.compile(template, { ...this.props, styles });
   }
 }

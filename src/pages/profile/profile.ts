@@ -20,7 +20,7 @@ interface Props {
 }
 
 export class Profile extends Block {
-
+  // eslint-disable-next-line no-useless-constructor
   constructor(props: Props) {
     super(props);
   }
@@ -28,66 +28,66 @@ export class Profile extends Block {
   protected initChildren({ user }: Props) {
     this.children.userEmail = new UserInfoItem({
       name: 'Почта',
-      value: user.email
+      value: user.email,
     });
 
     this.children.userLogin = new UserInfoItem({
       name: 'Логин',
-      value: user.login
+      value: user.login,
     });
 
     this.children.userName = new UserInfoItem({
       name: 'Имя',
-      value: user.name
+      value: user.name,
     });
 
     this.children.userSurname = new UserInfoItem({
       name: 'Фамилия',
-      value: user.second_name
+      value: user.second_name,
     });
 
     this.children.userNickname = new UserInfoItem({
       name: 'Имя в чате',
-      value: user.display_name
+      value: user.display_name,
     });
 
     this.children.userPhone = new UserInfoItem({
       name: 'Телефон',
-      value: user.phone
+      value: user.phone,
     });
 
     this.children.linkChangeData = new Link({
       text: 'Изменить данные',
       className: 'profile-actions_item',
       events: {
-        click: e => {
+        click: (e) => {
           e.preventDefault();
           // renderDom('#app', new Auth())
-        }
-      }
-    })
+        },
+      },
+    });
 
     this.children.linkChangePassword = new Link({
       text: 'Изменить пароль',
       className: 'profile-actions_item',
       events: {
-        click: e => {
+        click: (e) => {
           e.preventDefault();
           // renderDom('#app', new Auth())
-        }
-      }
-    })
+        },
+      },
+    });
 
     this.children.linkExit = new Link({
       text: 'Выйти',
       className: 'profile-actions_item',
       events: {
-        click: e => {
+        click: (e) => {
           e.preventDefault();
-          renderDom('#app', new Auth())
-        }
-      }
-    })
+          renderDom('#app', new Auth());
+        },
+      },
+    });
   }
 
   render(): DocumentFragment {

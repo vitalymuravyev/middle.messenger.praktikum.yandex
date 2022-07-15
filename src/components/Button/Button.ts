@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 import template from './button.hbs';
-import * as styles from './button.css'
+import * as styles from './button.css';
 
 interface Props {
   text: string;
@@ -15,6 +15,6 @@ export class Button extends Block {
   }
 
   render(): DocumentFragment {
-    return this.compile(template, {...this.props, styles})
+    return this.compile(template, { ...this.props, styles });
   }
 }

@@ -10,6 +10,7 @@ export interface ErrorPage {
 }
 
 export class Error extends Block {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props: ErrorPage) {
     super(props);
   }
@@ -18,10 +19,10 @@ export class Error extends Block {
     this.children.link = new Link({
       text: props.link_text,
       className: 'link-button',
-    })
+    });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, { ...this.props, styles })
+    return this.compile(template, { ...this.props, styles });
   }
 }

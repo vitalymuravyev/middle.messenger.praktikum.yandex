@@ -12,19 +12,15 @@ const err404: ErrorPage = {
   number: 404,
   text: 'Не туда попали',
   link_text: 'Назад к чатам',
-}
+};
 
 const err500: ErrorPage = {
   number: 500,
   text: 'Мы уже фиксим',
-  link_text: 'Назад в будущее'
-}
+  link_text: 'Назад в будущее',
+};
 
 export class Chat extends Block {
-  constructor() {
-    super();
-  }
-
   protected initChildren() {
     this.children.chat1 = new ChatPreview(chatsMock[0]);
     this.children.chat2 = new ChatPreview(chatsMock[1]);
@@ -36,8 +32,8 @@ export class Chat extends Block {
       className: 'link-button',
       events: {
         click: (e) => {
-          e.preventDefault()
-          renderDom('#app', new Error(err404))
+          e.preventDefault();
+          renderDom('#app', new Error(err404));
         },
       },
     });
@@ -47,28 +43,28 @@ export class Chat extends Block {
       className: 'link-button',
       events: {
         click: (e) => {
-          e.preventDefault()
-          renderDom('#app', new Error(err500))
+          e.preventDefault();
+          renderDom('#app', new Error(err500));
         },
       },
-    })
+    });
 
     this.children.inputSearch = new ChatInput({
       name: 'search',
       placeholder: 'Поиск',
       autocomplete: 'on',
-      className: 'sidebar-search'
+      className: 'sidebar-search',
     });
 
     this.children.inputMessage = new ChatInput({
       name: 'message',
       placeholder: 'Введите текст',
       autocomplete: 'off',
-      className: 'message-input-label'
-    })
+      className: 'message-input-label',
+    });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, { styles })
+    return this.compile(template, { styles });
   }
 }

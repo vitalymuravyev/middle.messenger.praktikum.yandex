@@ -34,6 +34,9 @@
 
 .chats-wrapper {
   padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .link-wrapper {
@@ -41,22 +44,14 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-
   flex: 1 0 auto;
   border-bottom: 1px solid var(--separator-color);
-}
-
-.chats-wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .message-form {
   width: 100%;
   flex: 0 0 auto;
   padding: 15px 5px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,6 +66,5 @@
   color: var(--white);
   font-size: 16px;
   font-weight: 600;
-
   cursor: pointer;
 }

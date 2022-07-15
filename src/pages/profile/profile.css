@@ -24,13 +24,13 @@
   margin-top: 50px;
 }
 
-.profile-data-item:not(:last-child) {
-  border-bottom: 1px solid var(--separator-color);
-}
-
 .profile-data-item {
   font-size: 13px;
   line-height: 13px;
+}
+
+.profile-data-item:not(:last-child) {
+  border-bottom: 1px solid var(--separator-color);
 }
 
 .profile-actions {
