@@ -17,6 +17,7 @@
     }
   },
   "rules": {
+    "max-len": "off",
     "import/prefer-default-export": "off",
     "no-unused-vars": "warn",
     "import/no-unresolved": "off",
@@ -41,6 +42,6 @@
     "array-callback-return": "off",
     "@typescript-eslint/no-this-alias": ["off", {}],
     "no-useless-constructor": "warn",
-    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["target", "props"] }]
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["target", "props", "url"] }]
   }
 }
