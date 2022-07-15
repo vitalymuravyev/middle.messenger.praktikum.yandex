@@ -1,8 +1,8 @@
-import template from "./auth.hbs";
-import { Button } from "../../components/Button";
-import Block from "../../core/Block";
+import template from './auth.hbs';
+import { Button } from '../../components/Button';
+import Block from '../../core/Block';
 
-import * as styles from "./auth.css";
+import * as styles from './auth.css';
 import { Input } from '../../components/Input';
 import { Link } from '../../components/Link';
 import renderDom from '../../core/renderDom';
@@ -10,17 +10,24 @@ import { Singup } from '../singup';
 import { Chat } from '../chat';
 import { logFormData } from '../../utils/logFormData';
 import { Label } from '../../components/Label';
+import {
+  hideError, isFormValid, showError, validate,
+} from '../../utils/validator';
 
 export class Auth extends Block {
-  constructor() {
-    super();
-  }
-
   protected initChildren(): void {
     this.children.inputLogin = new Input({
       name: 'login',
       type: 'text',
       text: 'Логин',
+      events: {
+        blur: (evt) => {
+          validate('login', evt.target as HTMLInputElement);
+        },
+        focus: () => {
+          hideError();
+        },
+      },
     });
 
     this.children.labelLogin = new Label({
@@ -32,6 +39,14 @@ export class Auth extends Block {
       name: 'password',
       type: 'password',
       text: 'Пароль',
+      events: {
+        blur: (evt) => {
+          validate('password', evt.target as HTMLInputElement);
+        },
+        focus: () => {
+          hideError();
+        },
+      },
     });
 
     this.children.labelPassword = new Label({
@@ -40,12 +55,16 @@ export class Auth extends Block {
     });
 
     this.children.buttonEnter = new Button({
-      text: "Вход",
+      text: 'Вход',
       events: {
-        click: (e) => {
-          e.preventDefault()
-          logFormData('.form-wrapper')
-          renderDom('#app', new Chat())
+        click: (evt) => {
+          if (isFormValid('.form-wrapper')) {
+            logFormData('.form-wrapper');
+            renderDom('#app', new Chat());
+          } else {
+            evt.preventDefault();
+            showError('Все поля должны быть заполнены');
+          }
         },
       },
     });
@@ -55,11 +74,11 @@ export class Auth extends Block {
       className: 'link-button',
       events: {
         click: (e) => {
-          e.preventDefault()
-          renderDom('#app', new Singup())
+          e.preventDefault();
+          renderDom('#app', new Singup());
         },
       },
-    })
+    });
   }
 
   render() {

@@ -7,8 +7,8 @@ interface Props {
   type: 'text' | 'password' | 'email' | 'tel';
   text: string;
   events?: {
-    blur?: () => void;
-    focus?: () => void;
+    blur?: (e: Event) => void;
+    focus?: (e?: Event) => void;
   }
 }
 
