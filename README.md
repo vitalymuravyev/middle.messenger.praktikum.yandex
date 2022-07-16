@@ -11,4 +11,4 @@
 
 По заданию первого спринта только верстка
 
-Ссылка на ПР спринта 1: https://github.com/vitalymuravyev/middle.messenger.praktikum.yandex/pull/1
+Ссылка на ПР спринта 2: https://github.com/vitalymuravyev/middle.messenger.praktikum.yandex/pull/2
