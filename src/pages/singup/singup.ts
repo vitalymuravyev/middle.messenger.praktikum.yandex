@@ -1,6 +1,5 @@
 import Block from '../../core/Block';
 import template from './singup.hbs';
-import * as styles from './singup.css';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import renderDom from '../../core/renderDom';
@@ -182,6 +181,6 @@ export class Singup extends Block {
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, { styles });
+    return this.compile(template, {} );
   }
 }
