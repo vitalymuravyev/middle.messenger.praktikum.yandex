@@ -58,7 +58,8 @@ export class Auth extends Block {
       text: 'Вход',
       events: {
         click: (evt) => {
-          if (isFormValid('.form-wrapper')) {
+          const isError = (document.querySelector('.input-error') as HTMLElement).textContent;
+          if (isFormValid('.form-wrapper') && !isError) {
             logFormData('.form-wrapper');
             renderDom('#app', new Chat());
           } else {
