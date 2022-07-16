@@ -4,15 +4,15 @@
     "target": "es2016",
     "declaration": false,
     "module": "commonjs",
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "sourceMap": true,
-    "strictNullChecks": true,
     "lib": [
       "esnext",
       "dom",
       "dom.iterable"
-    ],
-  }
+    ]
+  },
+  "noImplicitAny": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "sourceMap": true,
+  "strictNullChecks": true
 }
