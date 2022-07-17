@@ -1,0 +1,17 @@
+.input-wrapper {
+  position: relative;
+  padding: 10px 20px;
+}
+
+.input-field {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--light-blue);
+  font-size: 13px;
+  line-height: 13px;
+  padding: 7px 0;
+}
+
+.input-field:focus {
+  outline: none;
+}

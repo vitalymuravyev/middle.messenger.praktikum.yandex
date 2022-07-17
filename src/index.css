@@ -1,0 +1,31 @@
+:root {
+  --separator-color: #eaeaea;
+  --light-blue: #3369f3;
+  --white: #fff;
+  --gray-text: #999;
+  --sidebar-background: #fbfbfb;
+  --light-gray: #efefef;
+  --red: #f00;
+}
+
+body {
+  font-family: Inter, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--light-blue);
+  text-align: center;
+  font-size: 11px;
+  line-height: 11px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}

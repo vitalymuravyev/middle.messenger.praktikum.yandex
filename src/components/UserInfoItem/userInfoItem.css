@@ -1,0 +1,10 @@
+.user-info-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.user-info-data {
+  color: var(--gray-text);
+}
