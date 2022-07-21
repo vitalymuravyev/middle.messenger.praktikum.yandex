@@ -9,9 +9,7 @@ import { Profile } from '../profile';
 import { mockUser } from '../../mock/user';
 import { logFormData } from '../../utils/logFormData';
 import { Label } from '../../components/Label';
-import {
-  hideError, isFormValid, showError, validate,
-} from '../../utils/validator';
+import { hideError, isFormValid, Rule, showError, validate, } from '../../utils/validator';
 
 export class Singup extends Block {
   protected initChildren() {
@@ -21,7 +19,7 @@ export class Singup extends Block {
       text: 'Почта',
       events: {
         blur: (evt) => {
-          validate('email', evt.target as HTMLInputElement);
+          validate(Rule.EMAIL, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -40,7 +38,7 @@ export class Singup extends Block {
       text: 'Логин',
       events: {
         blur: (evt) => {
-          validate('login', evt.target as HTMLInputElement);
+          validate(Rule.LOGIN, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -59,7 +57,7 @@ export class Singup extends Block {
       text: 'Имя',
       events: {
         blur: (evt) => {
-          validate('name', evt.target as HTMLInputElement);
+          validate(Rule.NAME, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -78,7 +76,7 @@ export class Singup extends Block {
       text: 'Фамилия',
       events: {
         blur: (evt) => {
-          validate('name', evt.target as HTMLInputElement);
+          validate(Rule.NAME, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -97,7 +95,7 @@ export class Singup extends Block {
       text: 'Телефон',
       events: {
         blur: (evt) => {
-          validate('phone', evt.target as HTMLInputElement);
+          validate(Rule.PHONE, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -116,7 +114,7 @@ export class Singup extends Block {
       text: 'Пароль',
       events: {
         blur: (evt) => {
-          validate('password', evt.target as HTMLInputElement);
+          validate(Rule.PASSWORD, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -156,7 +154,7 @@ export class Singup extends Block {
       text: 'Создать аккаунт',
       events: {
         click: (evt) => {
-          const isError = (document.querySelector('.input-error') as HTMLElement).textContent;
+          const isError = (document.querySelector('.input-error') as HTMLElement)?.textContent;
           if (isFormValid('.form-wrapper') && !isError) {
             logFormData('.form-wrapper');
             renderDom('#app', new Profile({ user: mockUser }));

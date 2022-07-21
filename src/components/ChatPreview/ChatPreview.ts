@@ -6,7 +6,7 @@ interface Props {
   name: string;
   text: string;
   time: string;
-  unread_number: string;
+  unreadNumber: string;
 }
 
 export class ChatPreview extends Block {

@@ -10,9 +10,7 @@ import { Singup } from '../singup';
 import { Chat } from '../chat';
 import { logFormData } from '../../utils/logFormData';
 import { Label } from '../../components/Label';
-import {
-  hideError, isFormValid, showError, validate,
-} from '../../utils/validator';
+import { hideError, isFormValid, Rule, showError, validate, } from '../../utils/validator';
 
 export class Auth extends Block {
   protected initChildren(): void {
@@ -22,7 +20,7 @@ export class Auth extends Block {
       text: 'Логин',
       events: {
         blur: (evt) => {
-          validate('login', evt.target as HTMLInputElement);
+          validate(Rule.LOGIN, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -41,7 +39,7 @@ export class Auth extends Block {
       text: 'Пароль',
       events: {
         blur: (evt) => {
-          validate('password', evt.target as HTMLInputElement);
+          validate(Rule.PASSWORD, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -58,7 +56,7 @@ export class Auth extends Block {
       text: 'Вход',
       events: {
         click: (evt) => {
-          const isError = (document.querySelector('.input-error') as HTMLElement).textContent;
+          const isError = (document.querySelector('.input-error') as HTMLElement)?.textContent;
           if (isFormValid('.form-wrapper') && !isError) {
             logFormData('.form-wrapper');
             renderDom('#app', new Chat());

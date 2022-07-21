@@ -169,7 +169,7 @@ export default class Block {
     return fragment.content;
   }
 
-  _createDocumentElement(tagName: string) {
+  private _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
   }
 

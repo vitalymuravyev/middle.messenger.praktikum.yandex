@@ -1,4 +1,5 @@
-// eslint-disable-next-line no-shadow
+import queryStringify from './queryStringify';
+
 enum METHODS {
   GET = 'GET',
   POST = 'POST',
@@ -12,12 +13,6 @@ interface IOptions {
   headers?: any;
   method: METHODS;
 }
-
-const queryStringify = (data: Record<string, string>): string => {
-  const str = Object.keys(data).reduce((acc, key) => [...acc, (`${key}=${data[key]}`)], []);
-
-  return `?${str.join('&')}`;
-};
 
 class HTTPTransport {
   get = (url: string, options: IOptions = { method: METHODS.GET }): Promise<XMLHttpRequest> => {
