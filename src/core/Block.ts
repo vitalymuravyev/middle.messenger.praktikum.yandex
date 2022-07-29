@@ -184,4 +184,13 @@ export default class Block {
   protected initChildren(props = {}) {
     this.props = props;
   }
+
+  hide() {
+    this._element?.remove();
+    // this.getContent().style.display = 'none';
+  }
+
+  show() {
+    this.getContent().style.display = 'block';
+  }
 }

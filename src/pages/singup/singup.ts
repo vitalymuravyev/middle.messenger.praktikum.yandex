@@ -4,12 +4,14 @@ import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import renderDom from '../../core/renderDom';
 import { Link } from '../../components/Link';
-import { Auth } from '../auth';
 import { Profile } from '../profile';
 import { mockUser } from '../../mock/user';
 import { logFormData } from '../../utils/logFormData';
 import { Label } from '../../components/Label';
-import { hideError, isFormValid, Rule, showError, validate, } from '../../utils/validator';
+import {
+  hideError, isFormValid, Rule, showError, validate,
+} from '../../utils/validator';
+import { Router } from '../../core/router/Router';
 
 export class Singup extends Block {
   protected initChildren() {
@@ -172,13 +174,14 @@ export class Singup extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          renderDom('#app', new Auth());
+          const router = new Router('#app');
+          router.go('/');
         },
       },
     });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, {} );
+    return this.compile(template, {});
   }
 }

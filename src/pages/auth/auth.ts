@@ -6,11 +6,13 @@ import * as styles from './auth.css';
 import { Input } from '../../components/Input';
 import { Link } from '../../components/Link';
 import renderDom from '../../core/renderDom';
-import { Singup } from '../singup';
 import { Chat } from '../chat';
 import { logFormData } from '../../utils/logFormData';
 import { Label } from '../../components/Label';
-import { hideError, isFormValid, Rule, showError, validate, } from '../../utils/validator';
+import {
+  hideError, isFormValid, Rule, showError, validate,
+} from '../../utils/validator';
+import { Router } from '../../core/router/Router';
 
 export class Auth extends Block {
   protected initChildren(): void {
@@ -74,7 +76,8 @@ export class Auth extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          renderDom('#app', new Singup());
+          const router = new Router('#app');
+          router.go('/sign-up');
         },
       },
     });
