@@ -20,39 +20,40 @@ interface Props {
 
 export class Profile extends Block {
   // eslint-disable-next-line no-useless-constructor
-  constructor(props: Props) {
+  constructor(props) {
+    console.log(props)
     super(props);
   }
 
   protected initChildren({ user }: Props) {
     this.children.userEmail = new UserInfoItem({
       name: 'Почта',
-      value: user.email,
+      value: this.props?.email,
     });
 
     this.children.userLogin = new UserInfoItem({
       name: 'Логин',
-      value: user.login,
+      value: this.props?.login,
     });
 
     this.children.userName = new UserInfoItem({
       name: 'Имя',
-      value: user.name,
+      value: this.props?.name,
     });
 
     this.children.userSurname = new UserInfoItem({
       name: 'Фамилия',
-      value: user.second_name,
+      value: this.props?.second_name,
     });
 
     this.children.userNickname = new UserInfoItem({
       name: 'Имя в чате',
-      value: user.display_name,
+      value: this.props?.display_name,
     });
 
     this.children.userPhone = new UserInfoItem({
       name: 'Телефон',
-      value: user.phone,
+      value: this.props?.phone,
     });
 
     this.children.linkChangeData = new Link({

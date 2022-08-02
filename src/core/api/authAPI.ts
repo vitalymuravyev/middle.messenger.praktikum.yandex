@@ -1,18 +1,5 @@
 import { HTTPTransport } from '../fetch';
-
-interface ILoginData {
-  login: string;
-  password: string;
-}
-
-interface IUserSignup {
-  first_name: string
-  second_name: string
-  login: string
-  email: string
-  password: string
-  phone: string
-}
+import { ILoginData, IUserSignup } from '../../types/auth';
 
 export class AuthAPI {
   private fetch: HTTPTransport;
@@ -26,7 +13,7 @@ export class AuthAPI {
   }
 
   signup(data: IUserSignup) {
-    return this.fetch.post('/auth/signup', { data })
+    return this.fetch.post('/auth/signup', { data });
   }
 
   logout() {

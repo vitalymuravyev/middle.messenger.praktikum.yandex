@@ -1,5 +1,7 @@
 import { AuthAPI } from '../api/authAPI';
 import { Router } from '../router/Router';
+import { ILoginData, IUserSignup } from '../../types/auth';
+import { store } from '../store';
 
 class AuthController {
   private api: AuthAPI;
@@ -8,24 +10,29 @@ class AuthController {
     this.api = new AuthAPI();
   }
 
-  login(data) {
+  login(data: ILoginData) {
     this.api.login(data)
+      .then(() => {
+        this.getUser();
+      })
       .then(() => {
         const router = new Router('#app');
         router.go('/messenger');
-      })
-
+      });
   }
 
-  signup(data) {
+  signup(data: IUserSignup) {
     this.api.signup(data)
+      .then(() => {
+        this.getUser();
+      })
       .then(() => {
         const router = new Router('#app');
         router.go('/messenger');
       })
       .catch((err) => {
         throw new Error(err);
-      })
+      });
   }
 
   logout() {
@@ -33,7 +40,15 @@ class AuthController {
       .then(() => {
         const router = new Router('#app');
         router.go('/');
-      })
+      });
+  }
+
+  getUser() {
+    this.api.getUser()
+      .then((resp) => {
+        console.log('getU', resp);
+        store.set('currentUser', resp);
+      });
   }
 }
 

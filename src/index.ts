@@ -2,8 +2,7 @@ import { Auth } from './pages/auth';
 import { Router } from './core/router/Router';
 import { Singup } from './pages/singup';
 import { Error, ErrorPage } from './pages/error/error';
-import { Profile } from './pages/profile';
-import { mockUser } from './mock/user';
+import Profile from './pages/profile';
 import { Chat } from './pages/chat';
 
 const err404: ErrorPage = {
@@ -24,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   router.use('/', new Auth())
     .use('/sign-up', new Singup())
     .use('/messenger', new Chat())
-    .use('/settings', new Profile({ user: mockUser }))
+    .use('/settings', new Profile())
     .use('/error', new Error(err500))
     .use('', new Error(err404))
     .start();
