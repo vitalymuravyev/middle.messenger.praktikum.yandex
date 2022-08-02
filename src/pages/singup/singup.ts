@@ -2,16 +2,14 @@ import Block from '../../core/Block';
 import template from './singup.hbs';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
-import renderDom from '../../core/renderDom';
 import { Link } from '../../components/Link';
-import { Profile } from '../profile';
-import { mockUser } from '../../mock/user';
 import { logFormData } from '../../utils/logFormData';
 import { Label } from '../../components/Label';
 import {
   hideError, isFormValid, Rule, showError, validate,
 } from '../../utils/validator';
 import { Router } from '../../core/router/Router';
+import AuthController from '../../core/controllers/authController';
 
 export class Singup extends Block {
   protected initChildren() {
@@ -156,12 +154,12 @@ export class Singup extends Block {
       text: 'Создать аккаунт',
       events: {
         click: (evt) => {
+          evt.preventDefault();
           const isError = (document.querySelector('.input-error') as HTMLElement)?.textContent;
           if (isFormValid('.form-wrapper') && !isError) {
-            logFormData('.form-wrapper');
-            renderDom('#app', new Profile({ user: mockUser }));
+            const data = logFormData('.form-wrapper');
+            AuthController.signup(data);
           } else {
-            evt.preventDefault();
             showError('Все поля должны быть заполнены');
           }
         },

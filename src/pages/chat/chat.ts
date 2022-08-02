@@ -7,6 +7,7 @@ import { Error, ErrorPage } from '../error/error';
 import { chatsMock } from '../../mock/chats';
 import { ChatPreview } from '../../components/ChatPreview';
 import { ChatInput } from '../../components/ChatInput';
+import { Router } from '../../core/router/Router';
 
 const err404: ErrorPage = {
   number: 404,
@@ -61,6 +62,18 @@ export class Chat extends Block {
       placeholder: 'Введите текст',
       autocomplete: 'off',
       className: 'message-input-label',
+    });
+
+    this.children.linkProfile = new Link({
+      text: 'Профиль >',
+      className: 'sidebar-profile_link',
+      events: {
+        click: (e) => {
+          e.preventDefault();
+          const router = new Router('#app');
+          router.go('/settings');
+        },
+      },
     });
   }
 

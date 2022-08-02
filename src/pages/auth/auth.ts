@@ -5,14 +5,13 @@ import Block from '../../core/Block';
 import * as styles from './auth.css';
 import { Input } from '../../components/Input';
 import { Link } from '../../components/Link';
-import renderDom from '../../core/renderDom';
-import { Chat } from '../chat';
 import { logFormData } from '../../utils/logFormData';
 import { Label } from '../../components/Label';
 import {
   hideError, isFormValid, Rule, showError, validate,
 } from '../../utils/validator';
 import { Router } from '../../core/router/Router';
+import AuthController from '../../core/controllers/authController';
 
 export class Auth extends Block {
   protected initChildren(): void {
@@ -58,12 +57,12 @@ export class Auth extends Block {
       text: 'Вход',
       events: {
         click: (evt) => {
+          evt.preventDefault();
           const isError = (document.querySelector('.input-error') as HTMLElement)?.textContent;
           if (isFormValid('.form-wrapper') && !isError) {
-            logFormData('.form-wrapper');
-            renderDom('#app', new Chat());
+            const data = logFormData('.form-wrapper');
+            AuthController.login(data);
           } else {
-            evt.preventDefault();
             showError('Все поля должны быть заполнены');
           }
         },

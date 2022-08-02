@@ -1,4 +1,4 @@
-export const logFormData = (selector: string): void => {
+export const logFormData = (selector: string): Record<string, string> | void => {
   const form = document.querySelector(selector) as HTMLFormElement;
   if (!form) {
     console.log('Такой формы не существует');
@@ -14,5 +14,5 @@ export const logFormData = (selector: string): void => {
       data[key] = value;
     }
   }
-  console.log(data);
+  return data;
 };

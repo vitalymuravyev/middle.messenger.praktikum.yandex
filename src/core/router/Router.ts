@@ -41,9 +41,7 @@ export class Router {
   }
 
   private _onRoute(pathname: string) {
-    console.log(pathname)
     const route = this.getRoute(pathname);
-    console.log(route)
     if (!route) return;
 
     if (this._currentRoute && this._currentRoute !== route) {
@@ -51,7 +49,6 @@ export class Router {
     }
 
     this._currentRoute = route;
-    console.log('curr ', this._currentRoute)
     route.render();
   }
 

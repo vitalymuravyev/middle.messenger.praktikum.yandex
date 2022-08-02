@@ -2,9 +2,8 @@ import Block from '../../core/Block';
 import template from './profile.hbs';
 import * as styles from './profile.css';
 import { Link } from '../../components/Link';
-import renderDom from '../../core/renderDom';
-import { Auth } from '../auth';
 import { UserInfoItem } from '../../components/UserInfoItem';
+import AuthController from '../../core/controllers/authController';
 
 export interface User {
   email: string;
@@ -84,7 +83,7 @@ export class Profile extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          renderDom('#app', new Auth());
+          AuthController.logout();
         },
       },
     });
