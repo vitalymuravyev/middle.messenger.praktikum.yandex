@@ -14,46 +14,42 @@ export interface User {
   phone: string;
 }
 
-interface Props {
-  user: User;
-}
-
 export class Profile extends Block {
   // eslint-disable-next-line no-useless-constructor
-  constructor(props) {
-    console.log(props)
+  constructor(props: any) {
     super(props);
   }
 
-  protected initChildren({ user }: Props) {
+  protected initChildren(props: any) {
+    console.log(props)
     this.children.userEmail = new UserInfoItem({
       name: 'Почта',
-      value: this.props?.email,
+      value: props?.email,
     });
 
     this.children.userLogin = new UserInfoItem({
       name: 'Логин',
-      value: this.props?.login,
+      value: props?.login,
     });
 
     this.children.userName = new UserInfoItem({
       name: 'Имя',
-      value: this.props?.name,
+      value: props?.name,
     });
 
     this.children.userSurname = new UserInfoItem({
       name: 'Фамилия',
-      value: this.props?.second_name,
+      value: props?.second_name,
     });
 
     this.children.userNickname = new UserInfoItem({
       name: 'Имя в чате',
-      value: this.props?.display_name,
+      value: props?.display_name,
     });
 
     this.children.userPhone = new UserInfoItem({
       name: 'Телефон',
-      value: this.props?.phone,
+      value: props?.phone,
     });
 
     this.children.linkChangeData = new Link({

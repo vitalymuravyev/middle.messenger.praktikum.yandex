@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import EventBus from './EventBus';
+import { isEqual } from '../utils/isEqual';
 
 export default class Block {
   static EVENTS = {
@@ -113,16 +114,19 @@ export default class Block {
   }
 
   componentDidUpdate(_oldProps: any, _newProps: any) {
-    return true;
+    return !isEqual(_oldProps, _newProps);
   }
 
   setProps = (nextProps: any) => {
     if (!nextProps) return;
 
     Object.assign(this.props, nextProps);
+    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   };
 
   private _render() {
+    // this.initChildren();
+
     const block = this.render();
 
     const newElement = block.firstElementChild as HTMLElement;

@@ -37,8 +37,8 @@ export class Route {
 
   render(): void {
     if (!this._block) {
-      this._block = this._blockClass;
+      this._block = new this._blockClass(this._props);
     }
-    renderDom(this._props.rootQuery, this._block);
+    renderDom(this._props.rootQuery, this._block as Block);
   }
 }

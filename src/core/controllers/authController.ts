@@ -46,8 +46,7 @@ class AuthController {
   getUser() {
     this.api.getUser()
       .then((resp) => {
-        console.log('getU', resp);
-        store.set('currentUser', resp);
+        store.set('currentUser', JSON.parse(resp.response));
       });
   }
 }
