@@ -4,6 +4,9 @@ import * as styles from './profile.css';
 import { Link } from '../../components/Link';
 import { UserInfoItem } from '../../components/UserInfoItem';
 import AuthController from '../../core/controllers/authController';
+import { logFormData } from '../../utils/logFormData';
+import UserDataController from '../../core/controllers/userDataController';
+import { Avatar } from '../../components/Avatar';
 
 export interface User {
   email: string;
@@ -22,34 +25,53 @@ export class Profile extends Block {
 
   protected initChildren(props: any) {
     console.log(props)
+    this.children.avatar = new Avatar({
+      events: {
+        click: (evt) => {
+          // evt.preventDefault();
+          const inputFile: any = document.querySelector('.profile-avatar');
+          const formData: any = new FormData();
+          formData.append("avatar", inputFile.files[0]);
+          console.log(inputFile.files[0])
+          UserDataController.changeAvatar(formData)
+        }
+      }
+    })
+
     this.children.userEmail = new UserInfoItem({
-      name: 'Почта',
+      title: 'Почта',
       value: props?.email,
+      name: 'email'
     });
 
     this.children.userLogin = new UserInfoItem({
-      name: 'Логин',
+      title: 'Логин',
       value: props?.login,
+      name: 'login'
     });
 
     this.children.userName = new UserInfoItem({
-      name: 'Имя',
-      value: props?.name,
+      title: 'Имя',
+      value: props?.first_name,
+      name: 'first_name'
     });
 
     this.children.userSurname = new UserInfoItem({
-      name: 'Фамилия',
+      title: 'Фамилия',
       value: props?.second_name,
+      name: 'second_name'
     });
 
     this.children.userNickname = new UserInfoItem({
-      name: 'Имя в чате',
+      title: 'Имя в чате',
       value: props?.display_name,
+      name: 'display_name'
     });
 
     this.children.userPhone = new UserInfoItem({
-      name: 'Телефон',
+      title: 'Телефон',
       value: props?.phone,
+      name: 'phone'
     });
 
     this.children.linkChangeData = new Link({
@@ -58,7 +80,8 @@ export class Profile extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          // renderDom('#app', new Auth())
+          const data = logFormData('.profile-data_list');
+          UserDataController.changeUser(data);
         },
       },
     });

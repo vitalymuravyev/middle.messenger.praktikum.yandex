@@ -5,6 +5,12 @@
   padding: 10px 0;
 }
 
+.user-info-wrapper:not(:last-child) {
+  border-bottom: 1px solid var(--separator-color);
+}
+
 .user-info-data {
   color: var(--gray-text);
+  border: none;
+  text-align: right;
 }

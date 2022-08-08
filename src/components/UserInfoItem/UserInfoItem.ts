@@ -5,6 +5,7 @@ import * as styles from './userInfoItem.css';
 interface Props {
   name: string;
   value: string;
+  title: string;
 }
 
 export class UserInfoItem extends Block {
