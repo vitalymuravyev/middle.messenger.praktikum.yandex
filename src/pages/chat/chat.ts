@@ -42,7 +42,7 @@ export class Chat extends Block {
             events: {
               click: (evt) => {
                 console.log(value.id)
-                ChatsController.getChat(value.id)
+                ChatsController.getChat(value.id, this.props.currentUser.id)
               }
             }
           })
