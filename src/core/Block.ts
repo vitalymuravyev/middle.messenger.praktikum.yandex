@@ -29,7 +29,7 @@ export default class Block {
     const { props, children } = this.getPropsAndChildren(propsAndChildren);
     this.children = children;
 
-    this.initChildren(props);
+    this.initChildren();
     this._meta = { props };
 
     this.props = this._makePropsProxy(props);
@@ -125,7 +125,7 @@ export default class Block {
   };
 
   private _render() {
-    // this.initChildren();
+    this.initChildren();
 
     const block = this.render();
 
@@ -156,6 +156,7 @@ export default class Block {
     Object.entries(this.children).forEach(([key, child]: [string, Block]) => {
       if (Array.isArray(child)) {
         props[key] = child.map((item) => `<div data-id="${item.id}"></div>`);
+        return
       }
       props[key] = `<div data-id="${child.id}"></div>`;
     });
@@ -165,6 +166,15 @@ export default class Block {
     fragment.innerHTML = template(props);
 
     Object.values(this.children).forEach((child: Block) => {
+      if (Array.isArray(child)) {
+        child.map((item) => {
+          const stub = fragment.content.querySelector(`[data-id="${item.id}"]`);
+          if (!stub) return;
+
+          stub.replaceWith(item.getContent());
+        });
+        return;
+      }
       const stub = fragment.content.querySelector(`[data-id="${child.id}"]`) as HTMLElement;
 
       stub.replaceWith(child.getContent());
@@ -185,8 +195,7 @@ export default class Block {
     return <HTMLElement> this.element;
   }
 
-  protected initChildren(props = {}) {
-    this.props = props;
+  protected initChildren() {
   }
 
   hide() {

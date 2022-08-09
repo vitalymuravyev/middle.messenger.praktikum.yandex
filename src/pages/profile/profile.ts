@@ -23,12 +23,11 @@ export class Profile extends Block {
     super(props);
   }
 
-  protected initChildren(props: any) {
-    console.log(props)
+  protected initChildren() {
     this.children.avatar = new Avatar({
       events: {
         click: (evt) => {
-          // evt.preventDefault();
+          evt.preventDefault();
           const inputFile: any = document.querySelector('.profile-avatar');
           const formData: any = new FormData();
           formData.append("avatar", inputFile.files[0]);
@@ -40,37 +39,37 @@ export class Profile extends Block {
 
     this.children.userEmail = new UserInfoItem({
       title: 'Почта',
-      value: props?.email,
+      value: this.props?.email,
       name: 'email'
     });
 
     this.children.userLogin = new UserInfoItem({
       title: 'Логин',
-      value: props?.login,
+      value: this.props?.login,
       name: 'login'
     });
 
     this.children.userName = new UserInfoItem({
       title: 'Имя',
-      value: props?.first_name,
+      value: this.props?.first_name,
       name: 'first_name'
     });
 
     this.children.userSurname = new UserInfoItem({
       title: 'Фамилия',
-      value: props?.second_name,
+      value: this.props?.second_name,
       name: 'second_name'
     });
 
     this.children.userNickname = new UserInfoItem({
       title: 'Имя в чате',
-      value: props?.display_name,
+      value: this.props?.display_name,
       name: 'display_name'
     });
 
     this.children.userPhone = new UserInfoItem({
       title: 'Телефон',
-      value: props?.phone,
+      value: this.props?.phone,
       name: 'phone'
     });
 
@@ -81,7 +80,7 @@ export class Profile extends Block {
         click: (e) => {
           e.preventDefault();
           const data = logFormData('.profile-data_list');
-          UserDataController.changeUser(data);
+          UserDataController.changeUser(data as any);
         },
       },
     });

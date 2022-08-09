@@ -1,7 +1,8 @@
 import { AuthAPI } from '../api/authAPI';
 import { Router } from '../router/Router';
 import { ILoginData, IUserSignup } from '../../types/auth';
-import { store } from '../store';
+import store from '../store';
+import ChatsController from './chatsController';
 
 class AuthController {
   private api: AuthAPI;
@@ -15,6 +16,7 @@ class AuthController {
       .then(() => {
         this.getUser();
       })
+      .then(() => ChatsController.getChats())
       .then(() => {
         const router = new Router('#app');
         router.go('/messenger');

@@ -19,4 +19,4 @@ class Store extends EventBus {
   }
 }
 
-export const store = new Store();
+export default new Store();

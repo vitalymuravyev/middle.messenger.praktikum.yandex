@@ -4,10 +4,12 @@ import * as styles from './chat.css';
 import { Link } from '../../components/Link';
 import renderDom from '../../core/renderDom';
 import { Error, ErrorPage } from '../error/error';
-import { chatsMock } from '../../mock/chats';
 import { ChatPreview } from '../../components/ChatPreview';
 import { ChatInput } from '../../components/ChatInput';
 import { Router } from '../../core/router/Router';
+import { Button } from '../../components/Button';
+import { logFormData } from '../../utils/logFormData';
+import ChatsController from '../../core/controllers/chatsController';
 
 const err404: ErrorPage = {
   number: 404,
@@ -22,11 +24,24 @@ const err500: ErrorPage = {
 };
 
 export class Chat extends Block {
+  constructor(props: any) {
+    super(props);
+  }
+
   protected initChildren() {
-    this.children.chat1 = new ChatPreview(chatsMock[0]);
-    this.children.chat2 = new ChatPreview(chatsMock[1]);
-    this.children.chat3 = new ChatPreview(chatsMock[2]);
-    this.children.chat4 = new ChatPreview(chatsMock[3]);
+    this.children.chatList = [];
+
+    if (this.props?.chatsStore) {
+      Object.values(this.props.chatsStore).map((value) => {
+        this.children.chatList.push(
+          new ChatPreview({
+            name: value.title,
+            text: value.last_message,
+            unreadNumber: value.unread_count,
+          })
+        )
+      })
+    }
 
     this.children.link404 = new Link({
       text: 'Page 404',
@@ -74,6 +89,27 @@ export class Chat extends Block {
           router.go('/settings');
         },
       },
+    });
+
+    this.children.buttonAddChat = new Button({
+      text: 'Добавить чат',
+      events: {
+        click: (evt) => {
+          evt.preventDefault()
+          const data = logFormData('.add-chat');
+          if (data?.title) {
+            console.log(data)
+            ChatsController.createChat(data);
+          }
+        }
+      }
+    })
+
+    this.children.inputChatName = new ChatInput({
+      name: 'title',
+      placeholder: '',
+      autocomplete: 'off',
+      className: 'sidebar-search',
     });
   }
 
