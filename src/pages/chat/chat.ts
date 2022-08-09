@@ -10,6 +10,7 @@ import { Router } from '../../core/router/Router';
 import { Button } from '../../components/Button';
 import { logFormData } from '../../utils/logFormData';
 import ChatsController from '../../core/controllers/chatsController';
+import { ChatOptions } from '../../components/ChatOptions';
 
 const err404: ErrorPage = {
   number: 404,
@@ -38,8 +39,20 @@ export class Chat extends Block {
             name: value.title,
             text: value.last_message,
             unreadNumber: value.unread_count,
+            events: {
+              click: (evt) => {
+                console.log(value.id)
+                ChatsController.getChat(value.id)
+              }
+            }
           })
         )
+      })
+    }
+
+    if (this.props?.token) {
+      this.children.header = new ChatOptions({
+        chatId: this.props.chatId
       })
     }
 
@@ -98,7 +111,6 @@ export class Chat extends Block {
           evt.preventDefault()
           const data = logFormData('.add-chat');
           if (data?.title) {
-            console.log(data)
             ChatsController.createChat(data);
           }
         }

@@ -24,6 +24,14 @@ export class ChatsAPI {
     return this.fetch.post('/chats', { data })
   }
 
+  getChat(id: number) {
+    return this.fetch.post(`/chats/token/${id}`, {});
+  }
+
+  deleteChat(id: number) {
+    return this.fetch.delete('/chats', { data: {chatId: id} })
+  }
+
   addUserToChat(data: IUsersAtChat) {
     return this.fetch.put('/chats/users', { data })
   }

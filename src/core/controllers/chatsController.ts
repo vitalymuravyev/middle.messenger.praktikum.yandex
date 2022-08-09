@@ -19,6 +19,25 @@ class ChatsController {
         store.set('allChats', JSON.parse(resp.response))
       })
   }
+
+  async getChat(id: number) {
+    const token = await this.api.getChat(id);
+    store.set('chatId', id);
+    store.set('token', token);
+  }
+
+  deleteChat(id: number) {
+    this.api.deleteChat(id)
+      .then(() => this.getChats());
+  }
+
+  addUser(data) {
+    this.api.addUserToChat(data);
+  }
+
+  deleteUser(data) {
+    this.api.deleteUserFromChat(data);
+  }
 }
 
 export default new ChatsController()

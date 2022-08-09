@@ -7,6 +7,9 @@ interface Props {
   text: string;
   time?: string;
   unreadNumber: string;
+  events?: {
+    click?: (evt: Event) => void
+  }
 }
 
 export class ChatPreview extends Block {
