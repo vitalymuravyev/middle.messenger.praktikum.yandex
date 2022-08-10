@@ -12,6 +12,7 @@ import {
 } from '../../utils/validator';
 import { Router } from '../../core/router/Router';
 import AuthController from '../../core/controllers/authController';
+import { ILoginData } from '../../types/auth';
 
 export class Auth extends Block {
   protected initChildren(): void {
@@ -60,7 +61,7 @@ export class Auth extends Block {
           evt.preventDefault();
           const isError = (document.querySelector('.input-error') as HTMLElement)?.textContent;
           if (isFormValid('.form-wrapper') && !isError) {
-            const data = logFormData('.form-wrapper');
+            const data: ILoginData = logFormData('.form-wrapper');
             AuthController.login(data);
           } else {
             showError('Все поля должны быть заполнены');

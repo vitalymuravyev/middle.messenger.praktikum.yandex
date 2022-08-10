@@ -4,7 +4,6 @@ import * as styles from './profile.css';
 import { Link } from '../../components/Link';
 import { UserInfoItem } from '../../components/UserInfoItem';
 import AuthController from '../../core/controllers/authController';
-import UserDataController from '../../core/controllers/userDataController';
 import { Avatar } from '../../components/Avatar';
 import { Router } from '../../core/router/Router';
 
@@ -31,9 +30,9 @@ export class Profile extends Block {
           evt.preventDefault();
           const router = new Router('#app');
           router.go('/settings/change-avatar');
-        }
-      }
-    })
+        },
+      },
+    });
 
     this.children.userEmail = new UserInfoItem({
       title: 'Почта',

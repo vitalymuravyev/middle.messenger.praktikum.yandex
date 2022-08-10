@@ -1,5 +1,5 @@
 import { HTTPTransport } from '../fetch';
-import { IUserData } from '../../types/userData';
+import { IChangePassword, IUserData } from '../../types/userData';
 
 export class UserDataAPI {
   private fetch: HTTPTransport;
@@ -9,14 +9,14 @@ export class UserDataAPI {
   }
 
   changeProfile(data: IUserData) {
-    return this.fetch.put('/user/profile', { data })
+    return this.fetch.put('/user/profile', { data });
   }
 
-  changeAvatar(data) {
-    return this.fetch.put('/user/profile/avatar', { data,  headers: {'Content-Type': 'multipart/form-data'} })
+  changeAvatar(data: any) {
+    return this.fetch.put('/user/profile/avatar', { data, headers: { 'Content-Type': 'multipart/form-data' } });
   }
 
-  changePassword(data) {
-    return this.fetch.put('/user/password', { data })
+  changePassword(data: IChangePassword) {
+    return this.fetch.put('/user/password', { data });
   }
 }

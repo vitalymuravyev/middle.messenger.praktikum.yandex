@@ -15,9 +15,9 @@ export class Error extends Block {
     super(props);
   }
 
-  protected initChildren(props: ErrorPage) {
+  protected initChildren() {
     this.children.link = new Link({
-      text: props.link_text,
+      text: this.props.link_text,
       className: 'link-button',
     });
   }

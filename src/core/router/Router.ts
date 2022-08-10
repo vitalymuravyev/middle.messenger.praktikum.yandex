@@ -1,7 +1,7 @@
 import { Route } from './Route';
-import Block from '../Block';
 
 export class Router {
+  // eslint-disable-next-line no-use-before-define
   private static __instance: Router;
 
   routes: Route[];
@@ -14,6 +14,7 @@ export class Router {
 
   constructor(rootQuery: string) {
     if (Router.__instance) {
+      // eslint-disable-next-line no-constructor-return
       return Router.__instance;
     }
 
@@ -34,8 +35,8 @@ export class Router {
 
   start() {
     window.onpopstate = ((evt: PopStateEvent) => {
-      this._onRoute(evt.currentTarget?.location.pathname);
-    }).bind(this);
+      this._onRoute((evt.currentTarget as any).location.pathname);
+    });
 
     this._onRoute(window.location.pathname);
   }

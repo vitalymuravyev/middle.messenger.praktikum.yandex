@@ -21,7 +21,7 @@ export class ChatsAPI {
   }
 
   createChat(data: ICreateChat) {
-    return this.fetch.post('/chats', { data })
+    return this.fetch.post('/chats', { data });
   }
 
   getChat(id: number) {
@@ -29,15 +29,14 @@ export class ChatsAPI {
   }
 
   deleteChat(id: number) {
-    return this.fetch.delete('/chats', { data: {chatId: id} })
+    return this.fetch.delete('/chats', { data: { chatId: id } });
   }
 
   addUserToChat(data: IUsersAtChat) {
-    return this.fetch.put('/chats/users', { data })
+    return this.fetch.put('/chats/users', { data });
   }
 
   deleteUserFromChat(data: IUsersAtChat) {
-    return this.fetch.delete('/chats/users', { data })
+    return this.fetch.delete('/chats/users', { data });
   }
-
 }

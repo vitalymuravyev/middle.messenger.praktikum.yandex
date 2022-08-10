@@ -6,7 +6,7 @@ interface Props {
   name: string;
   text: string;
   time?: string;
-  unreadNumber: string;
+  unreadNumber: number;
   events?: {
     click?: (evt: Event) => void
   }

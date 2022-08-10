@@ -7,20 +7,19 @@ type Indexed<T = any> = {
 export function set(
   object: Indexed | unknown,
   path: string,
-  value: unknown,
+  value: any,
 ): Indexed | unknown {
   if (typeof object !== 'object' || object === null) {
     return object;
   }
 
   if (path === 'localChat' && value.type !== 'message') {
-    object.localChat = {};
+    (object as any).localChat = {};
   }
 
-  const result = path.split('.').reduceRight<Indexed>(
-    (acc, key) => ({
-      [key]: acc,
-    }), value as any);
+  const result = path.split('.').reduceRight<Indexed>((acc, key) => ({
+    [key]: acc,
+  }), value as any);
 
   return merge(object as Indexed, result);
 }

@@ -6,3 +6,8 @@ export interface IUserData {
   email: string
   phone: string
 }
+
+export interface IChangePassword {
+  newPassword: string;
+  oldPassword: string;
+}

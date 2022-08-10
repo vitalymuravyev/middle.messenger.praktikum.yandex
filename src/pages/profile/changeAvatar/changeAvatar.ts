@@ -16,10 +16,12 @@ export class ChangeAvatar extends Block {
       events: {
         click: (evt) => {
           evt.preventDefault();
-          const inputFile = document.getElementById('avatar');
-          const data = new FormData();
-          data.append('avatar', inputFile.files[0]);
-          UserDataController.changeAvatar(data)
+          const inputFile = document.getElementById('avatar') as HTMLInputElement;
+          if (inputFile) {
+            const data = new FormData();
+            data.append('avatar', (inputFile as any).files[0]);
+            UserDataController.changeAvatar(data);
+          }
         },
       },
     });
@@ -38,6 +40,6 @@ export class ChangeAvatar extends Block {
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, {})
+    return this.compile(template, {});
   }
 }
