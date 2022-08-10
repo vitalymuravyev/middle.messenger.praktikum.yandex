@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-shadow
 export enum Rule {
   LOGIN = 'login',
   PASSWORD = 'password',
@@ -61,7 +62,7 @@ export const isFormValid = (selector: string): boolean => {
   fields.forEach((field) => {
     if (!field.validity.valid) {
       errors += 1;
-    };
+    }
   });
   return !errors;
 };

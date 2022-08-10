@@ -156,7 +156,7 @@ export default class Block {
     Object.entries(this.children).forEach(([key, child]: [string, Block]) => {
       if (Array.isArray(child)) {
         props[key] = child.map((item) => `<div data-id="${item.id}"></div>`);
-        return
+        return;
       }
       props[key] = `<div data-id="${child.id}"></div>`;
     });
@@ -192,11 +192,11 @@ export default class Block {
   }
 
   getContent(): HTMLElement {
-    return <HTMLElement>this.element;
+    return <HTMLElement> this.element;
   }
 
-  protected initChildren() {
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  protected initChildren() {}
 
   hide() {
     this._element?.remove();

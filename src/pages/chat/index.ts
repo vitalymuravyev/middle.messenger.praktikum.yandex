@@ -6,7 +6,7 @@ const withChats = connect((state) => ({
   chatId: state.chatId,
   token: state.token,
   currentUser: state.currentUser,
-  currentChat: state.chat
-}))
+  currentChat: state.chat,
+}));
 
 export default withChats(Chat);

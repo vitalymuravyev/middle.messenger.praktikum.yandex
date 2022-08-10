@@ -14,6 +14,6 @@ export class Message extends Block {
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, { ...this.props, styles })
+    return this.compile(template, { ...this.props, styles });
   }
 }

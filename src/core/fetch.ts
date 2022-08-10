@@ -23,7 +23,7 @@ export class HTTPTransport {
       // eslint-disable-next-line no-param-reassign
       url = `${url}${queryStringify(options.data)}`;
     }
-    return this.request(url, { ... options, method: METHODS.GET }, options.timeout);
+    return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
   };
 
   // eslint-disable-next-line arrow-body-style

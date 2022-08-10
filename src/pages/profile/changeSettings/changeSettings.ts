@@ -2,7 +2,9 @@ import Block from '../../../core/Block';
 import template from './changeSettings.hbs';
 import { Label } from '../../../components/Label';
 import { Input } from '../../../components/Input';
-import { hideError, isFormValid, Rule, showError, validate } from '../../../utils/validator';
+import {
+  hideError, isFormValid, Rule, showError, validate,
+} from '../../../utils/validator';
 import { Button } from '../../../components/Button';
 import { logFormData } from '../../../utils/logFormData';
 import UserDataController from '../../../core/controllers/userDataController';
@@ -165,6 +167,6 @@ export class ChangeSettings extends Block {
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, {})
+    return this.compile(template, {});
   }
 }

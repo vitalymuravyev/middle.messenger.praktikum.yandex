@@ -16,17 +16,17 @@ export class ChatOptions extends Block {
       text: 'Remove chat',
       events: {
         click: () => {
-          ChatsController.deleteChat(this.props.chatId)
-        }
-      }
+          ChatsController.deleteChat(this.props.chatId);
+        },
+      },
     });
 
     this.children.inputUserId = new ChatInput({
       name: 'userId',
       autocomplete: 'off',
       className: 'user-id',
-      placeholder: 'User'
-    })
+      placeholder: 'User',
+    });
 
     this.children.buttonAddUser = new Button({
       text: 'Добавить пользователя',
@@ -37,13 +37,13 @@ export class ChatOptions extends Block {
           if (data?.userId) {
             ChatsController.addUser({
               chatId: this.props.chatId,
-              users: [data.userId]
-            })
+              users: [data.userId],
+            });
           }
           (document.querySelector('.add-remove-user') as HTMLFormElement).reset();
-        }
-      }
-    })
+        },
+      },
+    });
 
     this.children.buttonRemoveUser = new Button({
       text: 'Удалить пользователя',
@@ -54,16 +54,16 @@ export class ChatOptions extends Block {
           if (data?.userId) {
             ChatsController.deleteUser({
               chatId: this.props.chatId,
-              users: [data.userId]
-            })
+              users: [data.userId],
+            });
             data.userId = '';
           }
-        }
-      }
-    })
+        },
+      },
+    });
   }
 
   protected render(): DocumentFragment {
-    return  this.compile(template, { ...this.props, style })
+    return this.compile(template, { ...this.props, style });
   }
 }
