@@ -16,4 +16,4 @@
 на "Регистрацию" или в "Чаты", если нажать "Вход";
  - со страницы "Регистрация" - "Вход" или "Профиль" по кнопке "Создать аккаунт"
 
-Ссылка на ПР спринта 2: https://github.com/vitalymuravyev/middle.messenger.praktikum.yandex/pull/2
+Ссылка на ПР спринта 3: [#3](https://github.com/vitalymuravyev/middle.messenger.praktikum.yandex/pull/3)
