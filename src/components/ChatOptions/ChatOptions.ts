@@ -1,6 +1,5 @@
 import Block from '../../core/Block';
 import template from './chatOptions.hbs';
-import * as style from './chatOptions.css';
 import { Button } from '../Button';
 import ChatsController from '../../core/controllers/chatsController';
 import { ChatInput } from '../ChatInput';
@@ -64,6 +63,6 @@ export class ChatOptions extends Block {
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, { ...this.props, style });
+    return this.compile(template, { ...this.props });
   }
 }
