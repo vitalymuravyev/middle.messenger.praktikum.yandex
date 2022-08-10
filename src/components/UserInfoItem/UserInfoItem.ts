@@ -3,7 +3,6 @@ import template from './userInfoItem.hbs';
 import * as styles from './userInfoItem.css';
 
 interface Props {
-  name: string;
   value: string;
   title: string;
 }

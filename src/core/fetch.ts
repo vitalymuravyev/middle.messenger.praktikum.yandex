@@ -48,7 +48,10 @@ export class HTTPTransport {
       xhr.open(method, `${this._BASE_URL}${url}`);
 
       Object.keys(headers).forEach((key) => {
-        xhr.setRequestHeader(key, headers[key]);
+        if (key.toLowerCase() === 'content-type' && headers[key].toLowerCase() !== 'multipart/form-data') {
+          xhr.setRequestHeader(key, headers[key]);
+        }
+
       });
 
       xhr.withCredentials = true;
@@ -70,7 +73,11 @@ export class HTTPTransport {
 
       if (method === METHODS.GET || !data) {
         xhr.send();
-      } else {
+      } else if (Object.values(headers).includes('multipart/form-data')) {
+        xhr.send(data);
+      }
+       else
+      {
         xhr.send(JSON.stringify(data));
       }
     });

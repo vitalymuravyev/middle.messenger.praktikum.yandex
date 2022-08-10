@@ -13,6 +13,10 @@ export class UserDataAPI {
   }
 
   changeAvatar(data) {
-    return this.fetch.put('/user/profile/avatar', { data })
+    return this.fetch.put('/user/profile/avatar', { data,  headers: {'Content-Type': 'multipart/form-data'} })
+  }
+
+  changePassword(data) {
+    return this.fetch.put('/user/password', { data })
   }
 }

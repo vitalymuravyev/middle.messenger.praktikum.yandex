@@ -2,6 +2,7 @@ import Block from '../../core/Block';
 import template from './avatar.hbs';
 
 interface Props {
+  link: string;
   events: {
     click: (evt: Event) => void
   }

@@ -4,9 +4,9 @@ import * as styles from './profile.css';
 import { Link } from '../../components/Link';
 import { UserInfoItem } from '../../components/UserInfoItem';
 import AuthController from '../../core/controllers/authController';
-import { logFormData } from '../../utils/logFormData';
 import UserDataController from '../../core/controllers/userDataController';
 import { Avatar } from '../../components/Avatar';
+import { Router } from '../../core/router/Router';
 
 export interface User {
   email: string;
@@ -25,14 +25,12 @@ export class Profile extends Block {
 
   protected initChildren() {
     this.children.avatar = new Avatar({
+      link: `https://ya-praktikum.tech/api/v2/resources${this.props?.avatar}`,
       events: {
         click: (evt) => {
           evt.preventDefault();
-          const inputFile: any = document.querySelector('.profile-avatar');
-          const formData: any = new FormData();
-          formData.append("avatar", inputFile.files[0]);
-          console.log(inputFile.files[0])
-          UserDataController.changeAvatar(formData)
+          const router = new Router('#app');
+          router.go('/settings/change-avatar');
         }
       }
     })
@@ -40,37 +38,31 @@ export class Profile extends Block {
     this.children.userEmail = new UserInfoItem({
       title: 'Почта',
       value: this.props?.email,
-      name: 'email'
     });
 
     this.children.userLogin = new UserInfoItem({
       title: 'Логин',
       value: this.props?.login,
-      name: 'login'
     });
 
     this.children.userName = new UserInfoItem({
       title: 'Имя',
       value: this.props?.first_name,
-      name: 'first_name'
     });
 
     this.children.userSurname = new UserInfoItem({
       title: 'Фамилия',
       value: this.props?.second_name,
-      name: 'second_name'
     });
 
     this.children.userNickname = new UserInfoItem({
       title: 'Имя в чате',
       value: this.props?.display_name,
-      name: 'display_name'
     });
 
     this.children.userPhone = new UserInfoItem({
       title: 'Телефон',
       value: this.props?.phone,
-      name: 'phone'
     });
 
     this.children.linkChangeData = new Link({
@@ -79,8 +71,8 @@ export class Profile extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          const data = logFormData('.profile-data_list');
-          UserDataController.changeUser(data as any);
+          const router = new Router('#app');
+          router.go('/settings/change-settings');
         },
       },
     });
@@ -91,7 +83,20 @@ export class Profile extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          // renderDom('#app', new Auth())
+          const router = new Router('#app');
+          router.go('/settings/change-password');
+        },
+      },
+    });
+
+    this.children.linkBack = new Link({
+      text: 'К чатам',
+      className: 'profile-actions_item',
+      events: {
+        click: (e) => {
+          e.preventDefault();
+          const router = new Router('#app');
+          router.go('/messenger');
         },
       },
     });

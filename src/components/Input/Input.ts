@@ -6,6 +6,7 @@ interface Props {
   name: string;
   type: 'text' | 'password' | 'email' | 'tel';
   text: string;
+  value?: any;
   events?: {
     blur?: (e: Event) => void;
     focus?: (e?: Event) => void;

@@ -4,6 +4,9 @@ import { Singup } from './pages/singup';
 import { Error } from './pages/error/error';
 import Profile from './pages/profile';
 import Chat from './pages/chat';
+import ChangeSettings from './pages/profile/changeSettings';
+import { ChangePassword } from './pages/profile/changePassword';
+import { ChangeAvatar } from './pages/profile/changeAvatar';
 
 // const err404: ErrorPage = {
 //   number: 404,
@@ -25,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     .use('/messenger', Chat)
     .use('/settings', Profile)
     .use('/error', Error)
-    .use('', Error)
+    .use('/settings/change-settings', ChangeSettings)
+    .use('/settings/change-password', ChangePassword)
+    .use('/settings/change-avatar', ChangeAvatar)
+    .use('*', Error)
     .start();
 });
