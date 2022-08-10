@@ -163,7 +163,7 @@ export default class Block {
 
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
 
-    fragment.innerHTML = template(props);
+    fragment.innerHTML = template(props).split(',').join('');
 
     Object.values(this.children).forEach((child: Block) => {
       if (Array.isArray(child)) {
@@ -171,13 +171,13 @@ export default class Block {
           const stub = fragment.content.querySelector(`[data-id="${item.id}"]`);
           if (!stub) return;
 
-          stub.replaceWith(item.getContent());
+          stub.replaceWith(item.getContent()!);
         });
         return;
       }
       const stub = fragment.content.querySelector(`[data-id="${child.id}"]`) as HTMLElement;
-
-      stub.replaceWith(child.getContent());
+      if (!stub) return;
+      stub.replaceWith(child.getContent()!);
     });
 
     return fragment.content;
@@ -192,7 +192,7 @@ export default class Block {
   }
 
   getContent(): HTMLElement {
-    return <HTMLElement> this.element;
+    return <HTMLElement>this.element;
   }
 
   protected initChildren() {

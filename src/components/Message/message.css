@@ -1,0 +1,39 @@
+.message-outgoing {
+    background: #E4EDFD;
+
+    padding: 10px;
+    border-radius: 10px 10px 0 10px;
+
+    max-width: 400px;
+    align-self: flex-end;
+}
+
+.message-incoming {
+    background: #F8F8F8;
+
+    padding: 10px;
+    border-radius: 0px 10px 10px 10px;
+
+    max-width: 400px;
+    align-self: flex-start;
+}
+
+.message {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.message-text {
+    font-size: 12px;
+    line-height: 15px;
+    margin-right: 40px;
+    text-align: start;
+}
+
+.message-time {
+    font-size: 9px;
+    line-height: 9px;
+
+    align-self: end;
+}

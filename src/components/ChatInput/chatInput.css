@@ -1,5 +1,6 @@
 input.message-input-label,
-input.sidebar-search {
+input.sidebar-search,
+input.user-id {
   padding: 10px;
   font-size: 12px;
   line-height: 12px;
@@ -21,4 +22,8 @@ input:focus {
   margin-top: 23px;
   display: block;
   text-align: center;
+}
+
+.user-id {
+  width: 150px !important;
 }

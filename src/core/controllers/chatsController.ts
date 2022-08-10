@@ -31,13 +31,14 @@ class ChatsController {
 
     if (this.socket) {
       this.socket.close();
+      store.set('chat', { chatId: id })
     }
 
     this.socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`)
 
     this.socket.addEventListener("close", (event) => {
       if (event.wasClean) {
-        console.log("Соединение закрыто чисто");
+        console.log("Соединение закрыто");
       } else {
         console.log("Обрыв соединения");
       }
@@ -51,13 +52,17 @@ class ChatsController {
         content: '0',
         type: 'get old'
       }))
+    })
 
-      this.socket.addEventListener('message', (evt) => {
-        this.data = {
-          ...JSON.parse(evt.data),
-          chatId: id,
-        }
-      })
+    this.socket.addEventListener('message', (evt) => {
+      console.log('messa', evt)
+      this.data = {
+        ...JSON.parse(evt.data),
+        chatId: id,
+      }
+
+      store.set('chat', JSON.parse(evt.data))
+      console.log(store)
     })
 
     this.socket.addEventListener("error", (event) => {
@@ -82,6 +87,8 @@ class ChatsController {
         })
       );
     }
+
+    this.getChats();
   }
 
   deleteChat(id: number) {
