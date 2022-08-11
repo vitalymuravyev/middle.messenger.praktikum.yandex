@@ -9,7 +9,7 @@ export interface ErrorPage {
   link_text: string;
 }
 
-export class Error extends Block {
+export class Error extends Block<ErrorPage> {
   constructor(props: ErrorPage) {
     super(props);
   }

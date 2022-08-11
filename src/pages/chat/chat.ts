@@ -12,8 +12,16 @@ import { ChatOptions } from '../../components/ChatOptions';
 import { Message } from '../../components/Message';
 import { IChatInfo, IMessageData } from '../../types/chats';
 
-export class Chat extends Block {
-  constructor(props: any) {
+interface Props {
+  chatsStore: any,
+  currentUser: Record<string, any>,
+  currentChat: any,
+  token: string,
+  chatId: number,
+}
+
+export class Chat extends Block<Props> {
+  constructor(props: Props) {
     super(props);
   }
 
@@ -74,12 +82,7 @@ export class Chat extends Block {
           evt.preventDefault();
           const data = logFormData('.message-form');
           if (data?.message) {
-            ChatsController.sendMessage({
-              ...data,
-              userId: this.props.currentUser.id,
-              chatId: this.props.chatId,
-              token: this.props.token,
-            });
+            ChatsController.sendMessage(data as {message: string});
           }
         },
       },

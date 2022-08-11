@@ -11,7 +11,7 @@ import {
 import { Router } from '../../core/router/Router';
 import AuthController from '../../core/controllers/authController';
 
-export class Singup extends Block {
+export class Singup extends Block<any> {
   protected initChildren() {
     this.children.inputEmail = new Input({
       name: 'email',

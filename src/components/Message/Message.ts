@@ -8,7 +8,7 @@ interface Props {
   className: string;
 }
 
-export class Message extends Block {
+export class Message extends Block<Props> {
   constructor(props: Props) {
     super(props);
   }

@@ -49,6 +49,7 @@
     "no-use-before-define": "warn",
     "no-constructor-return": "off",
     "no-restricted-syntax": "warn",
-    "consistent-return": "warn"
+    "consistent-return": "warn",
+    "radix": "off"
   }
 }

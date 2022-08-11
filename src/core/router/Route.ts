@@ -5,7 +5,7 @@ import { isEqualString } from '../../utils/isEqualString';
 export class Route {
   _pathname: string;
 
-  _block: Block | null;
+  _block: Block<any> | null;
 
   _blockClass: any;
 
@@ -39,6 +39,6 @@ export class Route {
     if (!this._block) {
       this._block = new this._blockClass(this._props);
     }
-    renderDom(this._props.rootQuery, this._block as Block);
+    renderDom(this._props.rootQuery, this._block as Block<any>);
   }
 }

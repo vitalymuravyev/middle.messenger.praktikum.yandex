@@ -10,14 +10,15 @@ import { Router } from '../../core/router/Router';
 export interface User {
   email: string;
   login: string;
-  name: string;
+  first_name: string;
   second_name: string;
   display_name: string;
   phone: string;
+  avatar: string;
 }
 
-export class Profile extends Block {
-  constructor(props: any) {
+export class Profile extends Block<User> {
+  constructor(props: User) {
     super(props);
   }
 

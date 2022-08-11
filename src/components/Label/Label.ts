@@ -7,7 +7,7 @@ interface Props {
   text: string;
 }
 
-export class Label extends Block {
+export class Label extends Block<Props> {
   constructor(props: Props) {
     super(props);
   }

@@ -5,7 +5,7 @@ import UserDataController from '../../../core/controllers/userDataController';
 import { Link } from '../../../components/Link';
 import { Router } from '../../../core/router/Router';
 
-export class ChangeAvatar extends Block {
+export class ChangeAvatar extends Block<any> {
   constructor(props: any) {
     super(props);
   }

@@ -2,7 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 import EventBus from './EventBus';
 import { isEqual } from '../utils/isEqual';
 
-export default class Block {
+// eslint-disable-next-line @typescript-eslint/ban-types
+export default class Block<Props extends {}> {
   static EVENTS = {
     INIT: 'init',
     FLOW_RENDER: 'flow:render',
@@ -17,7 +18,7 @@ export default class Block {
 
   private eventBus: () => EventBus;
 
-  props: any;
+  props: Props;
 
   children: any;
 
@@ -93,7 +94,7 @@ export default class Block {
   private _componentDidMount() {
     this.componentDidMount();
 
-    Object.values(this.children).forEach((child: Block) => {
+    Object.values(this.children).forEach((child: Block<Props>) => {
       child.dispatchComponentDidMount();
     });
   }
@@ -144,7 +145,7 @@ export default class Block {
   }
 
   private _addEvents() {
-    const { events } = this.props;
+    const { events } = this.props as any;
 
     if (!events) return;
 
@@ -152,7 +153,7 @@ export default class Block {
   }
 
   compile(template: (pr: any) => string, props: any): DocumentFragment {
-    Object.entries(this.children).forEach(([key, child]: [string, Block]) => {
+    Object.entries(this.children).forEach(([key, child]: [string, Block<Props>]) => {
       if (Array.isArray(child)) {
         props[key] = child.map((item) => `<div data-id="${item.id}"></div>`);
         return;
@@ -164,7 +165,7 @@ export default class Block {
 
     fragment.innerHTML = template(props).split(',').join('');
 
-    Object.values(this.children).forEach((child: Block) => {
+    Object.values(this.children).forEach((child: Block<Props>) => {
       if (Array.isArray(child)) {
         child.map((item) => {
           const stub = fragment.content.querySelector(`[data-id="${item.id}"]`);

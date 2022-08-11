@@ -14,7 +14,7 @@ import { Router } from '../../core/router/Router';
 import AuthController from '../../core/controllers/authController';
 import { ILoginData } from '../../types/auth';
 
-export class Auth extends Block {
+export class Auth extends Block<any> {
   protected initChildren(): void {
     this.children.inputLogin = new Input({
       name: 'login',
@@ -61,7 +61,7 @@ export class Auth extends Block {
           evt.preventDefault();
           const isError = (document.querySelector('.input-error') as HTMLElement)?.textContent;
           if (isFormValid('.form-wrapper') && !isError) {
-            const data: ILoginData = logFormData('.form-wrapper');
+            const data = logFormData('.form-wrapper') as unknown as ILoginData;
             AuthController.login(data);
           } else {
             showError('Все поля должны быть заполнены');

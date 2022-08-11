@@ -1,8 +1,7 @@
 import store, { StoreEvents } from './store';
 import { isEqual } from '../utils/isEqual';
-import Block from './Block';
 
-export const connect = (mapStateToProps: (state: any) => Record<string, unknown>) => (Component: typeof Block) => class extends Component {
+export const connect = (mapStateToProps: (state: any) => Record<string, unknown>) => (Component: any) => class extends Component<any> {
   constructor(props: any) {
     let state: Record<string, unknown> = mapStateToProps(store.getState());
     super({ ...props, ...state });

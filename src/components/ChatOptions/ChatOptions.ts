@@ -5,8 +5,12 @@ import ChatsController from '../../core/controllers/chatsController';
 import { ChatInput } from '../ChatInput';
 import { logFormData } from '../../utils/logFormData';
 
-export class ChatOptions extends Block {
-  constructor(props: any) {
+interface Props {
+  chatId: number;
+}
+
+export class ChatOptions extends Block<Props> {
+  constructor(props: Props) {
     super(props);
   }
 
@@ -36,7 +40,7 @@ export class ChatOptions extends Block {
           if (data?.userId) {
             ChatsController.addUser({
               chatId: this.props.chatId,
-              users: [data.userId],
+              users: [parseInt(data.userId)],
             });
           }
           (document.querySelector('.add-remove-user') as HTMLFormElement).reset();
@@ -53,7 +57,7 @@ export class ChatOptions extends Block {
           if (data?.userId) {
             ChatsController.deleteUser({
               chatId: this.props.chatId,
-              users: [data.userId],
+              users: [parseInt(data.userId)],
             });
             data.userId = '';
           }

@@ -12,7 +12,7 @@ interface Props {
   }
 }
 
-export class ChatPreview extends Block {
+export class ChatPreview extends Block<Props> {
   constructor(props: Props) {
     super(props);
   }

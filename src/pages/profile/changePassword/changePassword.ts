@@ -11,7 +11,7 @@ import UserDataController from '../../../core/controllers/userDataController';
 import { Link } from '../../../components/Link';
 import { Router } from '../../../core/router/Router';
 
-export class ChangePassword extends Block {
+export class ChangePassword extends Block<any> {
   constructor(props: any) {
     super(props);
   }

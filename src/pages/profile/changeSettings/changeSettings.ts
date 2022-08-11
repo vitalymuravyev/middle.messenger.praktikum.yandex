@@ -10,9 +10,10 @@ import { logFormData } from '../../../utils/logFormData';
 import UserDataController from '../../../core/controllers/userDataController';
 import { Link } from '../../../components/Link';
 import { Router } from '../../../core/router/Router';
+import { User } from '../profile';
 
-export class ChangeSettings extends Block {
-  constructor(props: any) {
+export class ChangeSettings extends Block<User> {
+  constructor(props: User) {
     super(props);
   }
 
