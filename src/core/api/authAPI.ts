@@ -12,6 +12,9 @@ export class AuthAPI {
     return this.fetch.post('/auth/signin', { data })
       .then((resp) => {
         console.log(resp);
+      })
+      .catch((reason) => {
+        console.log(reason)
       });
   }
 
