@@ -61,7 +61,7 @@ export class HTTPTransport {
           resolve(xhr);
         } else {
           alert(this.response);
-          reject(new Error(this.statusText));
+          reject(this.response);
         }
       };
 

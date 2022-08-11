@@ -9,7 +9,10 @@ export class AuthAPI {
   }
 
   login(data: ILoginData) {
-    return this.fetch.post('/auth/signin', { data });
+    return this.fetch.post('/auth/signin', { data })
+      .then((resp) => {
+        console.log(resp);
+      });
   }
 
   signup(data: IUserSignup) {
