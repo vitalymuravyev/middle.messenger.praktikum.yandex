@@ -1,6 +1,5 @@
 import queryStringify from '../utils/queryStringify';
 
-// eslint-disable-next-line no-shadow
 enum METHODS {
   GET = 'GET',
   POST = 'POST',
@@ -20,23 +19,19 @@ export class HTTPTransport {
 
   get = (url: string, options: IOptions): Promise<XMLHttpRequest> => {
     if (options && options.data) {
-      // eslint-disable-next-line no-param-reassign
       url = `${url}${queryStringify(options.data)}`;
     }
     return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
   };
 
-  // eslint-disable-next-line arrow-body-style
   post = (url: string, options: IOptions): Promise<XMLHttpRequest> => {
     return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
   };
 
-  // eslint-disable-next-line arrow-body-style
   put = (url: string, options: IOptions): Promise<XMLHttpRequest> => {
     return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
   };
 
-  // eslint-disable-next-line arrow-body-style
   delete = (url: string, options: IOptions): Promise<XMLHttpRequest> => {
     return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
   };

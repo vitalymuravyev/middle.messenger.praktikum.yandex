@@ -17,7 +17,6 @@ export interface User {
 }
 
 export class Profile extends Block {
-  // eslint-disable-next-line no-useless-constructor
   constructor(props: any) {
     super(props);
   }

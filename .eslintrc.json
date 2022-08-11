@@ -42,7 +42,13 @@
     "array-callback-return": "off",
     "@typescript-eslint/no-this-alias": ["off", {}],
     "no-useless-constructor": "warn",
-    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["target", "props", "url", "object", "rhs", "lhs"] }],
-    "no-continue": "off"
+    "no-param-reassign": ["warn", { "props": true, "ignorePropertyModificationsFor": ["target", "props", "url", "object", "rhs", "lhs"] }],
+    "no-continue": "off",
+    "no-shadow": "warn",
+    "arrow-body-style": "off",
+    "no-use-before-define": "warn",
+    "no-constructor-return": "off",
+    "no-restricted-syntax": "warn",
+    "consistent-return": "warn"
   }
 }

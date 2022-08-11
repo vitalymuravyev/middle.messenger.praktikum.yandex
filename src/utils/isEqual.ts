@@ -28,7 +28,6 @@ export function isEqual(lhs: Indexed, rhs: Indexed) {
     return false;
   }
 
-  // eslint-disable-next-line no-restricted-syntax
   for (const [key, value] of Object.entries(lhs)) {
     const rightValue = rhs[key];
     if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {

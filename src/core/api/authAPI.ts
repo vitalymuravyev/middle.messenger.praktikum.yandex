@@ -14,7 +14,7 @@ export class AuthAPI {
         console.log(resp);
       })
       .catch((reason) => {
-        console.log(reason)
+        console.log(reason);
       });
   }
 

@@ -60,13 +60,6 @@ export class Chat extends Block {
       });
     }
 
-    // this.children.inputSearch = new ChatInput({
-    //   name: 'search',
-    //   placeholder: 'Поиск',
-    //   autocomplete: 'on',
-    //   className: 'sidebar-search',
-    // });
-
     this.children.inputMessage = new ChatInput({
       name: 'message',
       placeholder: 'Введите текст',

@@ -8,18 +8,6 @@ import ChangeSettings from './pages/profile/changeSettings';
 import { ChangePassword } from './pages/profile/changePassword';
 import { ChangeAvatar } from './pages/profile/changeAvatar';
 
-// const err404: ErrorPage = {
-//   number: 404,
-//   text: 'Не туда попали',
-//   link_text: 'Назад к чатам',
-// };
-//
-// const err500: ErrorPage = {
-//   number: 500,
-//   text: 'Мы уже фиксим',
-//   link_text: 'Назад в будущее',
-// };
-
 document.addEventListener('DOMContentLoaded', () => {
   const router = new Router('#app');
 

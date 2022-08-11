@@ -1,7 +1,6 @@
 import EventBus from './EventBus';
 import { set } from '../utils/set';
 
-// eslint-disable-next-line no-shadow
 export enum StoreEvents {
   Updated = 'updated',
 }

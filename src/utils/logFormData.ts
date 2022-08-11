@@ -1,4 +1,4 @@
-export const logFormData = (selector: string): any => {
+export const logFormData = (selector: string): Record<string, string> | void => {
   const form = document.querySelector(selector) as HTMLFormElement;
   if (!form) {
     console.log('Такой формы не существует');
@@ -8,12 +8,10 @@ export const logFormData = (selector: string): any => {
 
   const data: Record<string, string> = {};
 
-  // eslint-disable-next-line no-restricted-syntax
   for (const [key, value] of formData.entries()) {
     if (typeof value === 'string') {
       data[key] = value;
     }
   }
-  // eslint-disable-next-line consistent-return
   return data;
 };

@@ -10,7 +10,6 @@ export interface ErrorPage {
 }
 
 export class Error extends Block {
-  // eslint-disable-next-line no-useless-constructor
   constructor(props: ErrorPage) {
     super(props);
   }

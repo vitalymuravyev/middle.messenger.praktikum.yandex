@@ -61,7 +61,6 @@ export default class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    // eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
   }
 
   private _makePropsProxy(props: any) {
@@ -200,7 +199,6 @@ export default class Block {
 
   hide() {
     this._element?.remove();
-    // this.getContent().style.display = 'none';
   }
 
   show() {

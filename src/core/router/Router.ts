@@ -1,7 +1,6 @@
 import { Route } from './Route';
 
 export class Router {
-  // eslint-disable-next-line no-use-before-define
   private static __instance: Router;
 
   routes: Route[];
@@ -14,7 +13,6 @@ export class Router {
 
   constructor(rootQuery: string) {
     if (Router.__instance) {
-      // eslint-disable-next-line no-constructor-return
       return Router.__instance;
     }
 
