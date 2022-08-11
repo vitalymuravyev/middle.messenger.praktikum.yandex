@@ -11,6 +11,8 @@ export class Router {
 
   _rootQuery: string;
 
+  private _redirectPath: string[];
+
   constructor(rootQuery: string) {
     if (Router.__instance) {
       return Router.__instance;
@@ -20,6 +22,7 @@ export class Router {
     this.history = window.history;
     this._currentRoute = null;
     this._rootQuery = rootQuery;
+    this._redirectPath = ['/', '/sign-up'];
 
     Router.__instance = this;
   }
@@ -35,8 +38,11 @@ export class Router {
     window.onpopstate = ((evt: PopStateEvent) => {
       this._onRoute((evt.currentTarget as any).location.pathname);
     });
-
     this._onRoute(window.location.pathname);
+
+    if (localStorage.getItem('active') && this._redirectPath.includes(window.location.pathname)) {
+      this._onRoute('/messenger');
+    }
   }
 
   private _onRoute(pathname: string) {
@@ -52,6 +58,9 @@ export class Router {
   }
 
   go(pathname: string) {
+    if (localStorage.getItem('active') && this._redirectPath.includes(pathname)) {
+      pathname = '/messenger';
+    }
     this.history.pushState({}, '', pathname);
     this._onRoute(pathname);
   }

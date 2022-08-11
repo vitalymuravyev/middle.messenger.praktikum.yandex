@@ -18,6 +18,7 @@ class AuthController {
       })
       .then(() => ChatsController.getChats())
       .then(() => {
+        localStorage.setItem('active', 'true');
         const router = new Router('#app');
         router.go('/messenger');
       });
@@ -40,6 +41,7 @@ class AuthController {
   logout() {
     this.api.logout()
       .then(() => {
+        localStorage.removeItem('active');
         const router = new Router('#app');
         router.go('/');
       });
