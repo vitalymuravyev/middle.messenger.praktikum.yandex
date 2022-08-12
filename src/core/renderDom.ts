@@ -1,6 +1,6 @@
 import Block from './Block';
 
-const renderDom = (selector: string, component: Block<any>) => {
+function renderDom<T extends {}>(selector: string, component: Block<T>) {
   const root = document.querySelector(selector);
 
   if (!root) {
@@ -10,6 +10,6 @@ const renderDom = (selector: string, component: Block<any>) => {
   root.innerHTML = '';
 
   root.append(component.getContent());
-};
+}
 
 export default renderDom;

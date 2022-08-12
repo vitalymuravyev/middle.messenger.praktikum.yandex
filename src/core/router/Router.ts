@@ -1,13 +1,17 @@
 import { Route } from './Route';
 
+interface RouteProps {
+  rootQuery: string;
+}
+
 export class Router {
   private static __instance: Router;
 
-  routes: Route[];
+  routes: Route<RouteProps>[];
 
   history: History;
 
-  _currentRoute: Route | null;
+  _currentRoute: Route<RouteProps> | null;
 
   _rootQuery: string;
 
