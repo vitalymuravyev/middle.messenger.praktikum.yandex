@@ -2,18 +2,16 @@ import Block from '../../core/Block';
 import template from './singup.hbs';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
-import renderDom from '../../core/renderDom';
 import { Link } from '../../components/Link';
-import { Auth } from '../auth';
-import { Profile } from '../profile';
-import { mockUser } from '../../mock/user';
 import { logFormData } from '../../utils/logFormData';
 import { Label } from '../../components/Label';
 import {
-  hideError, isFormValid, showError, validate,
+  hideError, isFormValid, Rule, showError, validate,
 } from '../../utils/validator';
+import { Router } from '../../core/router/Router';
+import AuthController from '../../core/controllers/authController';
 
-export class Singup extends Block {
+export class Singup extends Block<any> {
   protected initChildren() {
     this.children.inputEmail = new Input({
       name: 'email',
@@ -21,7 +19,7 @@ export class Singup extends Block {
       text: 'Почта',
       events: {
         blur: (evt) => {
-          validate('email', evt.target as HTMLInputElement);
+          validate(Rule.EMAIL, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -40,7 +38,7 @@ export class Singup extends Block {
       text: 'Логин',
       events: {
         blur: (evt) => {
-          validate('login', evt.target as HTMLInputElement);
+          validate(Rule.LOGIN, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -59,7 +57,7 @@ export class Singup extends Block {
       text: 'Имя',
       events: {
         blur: (evt) => {
-          validate('name', evt.target as HTMLInputElement);
+          validate(Rule.NAME, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -78,7 +76,7 @@ export class Singup extends Block {
       text: 'Фамилия',
       events: {
         blur: (evt) => {
-          validate('name', evt.target as HTMLInputElement);
+          validate(Rule.NAME, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -97,7 +95,7 @@ export class Singup extends Block {
       text: 'Телефон',
       events: {
         blur: (evt) => {
-          validate('phone', evt.target as HTMLInputElement);
+          validate(Rule.PHONE, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -116,7 +114,7 @@ export class Singup extends Block {
       text: 'Пароль',
       events: {
         blur: (evt) => {
-          validate('password', evt.target as HTMLInputElement);
+          validate(Rule.PASSWORD, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -156,12 +154,12 @@ export class Singup extends Block {
       text: 'Создать аккаунт',
       events: {
         click: (evt) => {
-          const isError = (document.querySelector('.input-error') as HTMLElement).textContent;
+          evt.preventDefault();
+          const isError = (document.querySelector('.input-error') as HTMLElement)?.textContent;
           if (isFormValid('.form-wrapper') && !isError) {
-            logFormData('.form-wrapper');
-            renderDom('#app', new Profile({ user: mockUser }));
+            const data = logFormData('.form-wrapper');
+            AuthController.signup(data);
           } else {
-            evt.preventDefault();
             showError('Все поля должны быть заполнены');
           }
         },
@@ -174,13 +172,14 @@ export class Singup extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          renderDom('#app', new Auth());
+          const router = new Router('#app');
+          router.go('/');
         },
       },
     });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, {} );
+    return this.compile(template, {});
   }
 }

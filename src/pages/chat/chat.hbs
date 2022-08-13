@@ -2,26 +2,25 @@
     <div class="chat-container">
         <div class="chat-sidebar">
             <div class="sidebar-profile">
-                <a class="sidebar-profile_link">Профиль ></a>
+                {{{linkProfile}}}
             </div>
-            {{{inputSearch}}}
+            <form class="add-chat">
+                {{{inputChatName}}}
+                {{{buttonAddChat}}}
+            </form>
             <ul class="chat-list">
-                {{{chat1}}}
-                {{{chat2}}}
-                {{{chat3}}}
-                {{{chat4}}}
+                {{{chatList}}}
             </ul>
         </div>
         <div class="chats-wrapper">
-            <h3>Пока здесь будут ссылки на страницы ошибок</h3>
+            {{{header}}}
             <div class="link-wrapper">
-                {{{link404}}}
-                {{{link500}}}
+                {{{messages}}}
             </div>
 
             <form class="message-form">
                 {{{inputMessage}}}
-                <button class="message-form-button">&#62;</button>
+                {{{buttonMessage}}}
             </form>
         </div>
     </div>

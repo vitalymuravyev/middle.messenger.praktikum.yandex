@@ -9,7 +9,7 @@ interface Props {
   placeholder?: string;
 }
 
-export class ChatInput extends Block {
+export class ChatInput extends Block<Props> {
   constructor(props: Props) {
     super(props);
   }

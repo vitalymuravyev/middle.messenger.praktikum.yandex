@@ -1,6 +1,12 @@
-type TRule = 'login' | 'password' | 'email' | 'phone' | 'name';
+export enum Rule {
+  LOGIN = 'login',
+  PASSWORD = 'password',
+  EMAIL = 'email',
+  PHONE = 'phone',
+  NAME = 'name',
+}
 
-export const validationRules: Record<TRule, { rule: RegExp, error: string }> = {
+export const validationRules: Record<Rule, { rule: RegExp, error: string }> = {
   login: {
     rule: /^[0-9a-zA-Z\-_]{3,20}/,
     error: 'от 3 до 20 символов, латиница, цифры, допустимы дефис и нижнее подчёркивание',
@@ -33,7 +39,7 @@ export const showError = (errorText: string): void => {
   errEl.style.display = 'block';
 };
 
-export const validate = (field: TRule, element: HTMLInputElement): void => {
+export const validate = (field: Rule, element: HTMLInputElement): void => {
   const { rule, error } = validationRules[field];
 
   if (!rule.test(element.value)) {
@@ -53,7 +59,9 @@ export const isFormValid = (selector: string): boolean => {
 
   const fields = form.querySelectorAll('input');
   fields.forEach((field) => {
-    if (!field.validity.valid) errors += 1;
+    if (!field.validity.valid) {
+      errors += 1;
+    }
   });
   return !errors;
 };

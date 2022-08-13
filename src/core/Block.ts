@@ -1,7 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
 import EventBus from './EventBus';
+import { isEqual } from '../utils/isEqual';
 
-export default class Block {
+// eslint-disable-next-line @typescript-eslint/ban-types
+export default class Block<Props extends {}> {
   static EVENTS = {
     INIT: 'init',
     FLOW_RENDER: 'flow:render',
@@ -16,7 +18,7 @@ export default class Block {
 
   private eventBus: () => EventBus;
 
-  props: any;
+  props: Props;
 
   children: any;
 
@@ -28,7 +30,7 @@ export default class Block {
     const { props, children } = this.getPropsAndChildren(propsAndChildren);
     this.children = children;
 
-    this.initChildren(props);
+    this.initChildren();
     this._meta = { props };
 
     this.props = this._makePropsProxy(props);
@@ -60,7 +62,6 @@ export default class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    // eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
   }
 
   private _makePropsProxy(props: any) {
@@ -93,7 +94,7 @@ export default class Block {
   private _componentDidMount() {
     this.componentDidMount();
 
-    Object.values(this.children).forEach((child: Block) => {
+    Object.values(this.children).forEach((child: Block<Props>) => {
       child.dispatchComponentDidMount();
     });
   }
@@ -113,16 +114,19 @@ export default class Block {
   }
 
   componentDidUpdate(_oldProps: any, _newProps: any) {
-    return true;
+    return !isEqual(_oldProps, _newProps);
   }
 
   setProps = (nextProps: any) => {
     if (!nextProps) return;
 
     Object.assign(this.props, nextProps);
+    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   };
 
   private _render() {
+    this.initChildren();
+
     const block = this.render();
 
     const newElement = block.firstElementChild as HTMLElement;
@@ -141,7 +145,7 @@ export default class Block {
   }
 
   private _addEvents() {
-    const { events } = this.props;
+    const { events } = this.props as any;
 
     if (!events) return;
 
@@ -149,27 +153,37 @@ export default class Block {
   }
 
   compile(template: (pr: any) => string, props: any): DocumentFragment {
-    Object.entries(this.children).forEach(([key, child]: [string, Block]) => {
+    Object.entries(this.children).forEach(([key, child]: [string, Block<Props>]) => {
       if (Array.isArray(child)) {
         props[key] = child.map((item) => `<div data-id="${item.id}"></div>`);
+        return;
       }
       props[key] = `<div data-id="${child.id}"></div>`;
     });
 
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
 
-    fragment.innerHTML = template(props);
+    fragment.innerHTML = template(props).split(',').join('');
 
-    Object.values(this.children).forEach((child: Block) => {
+    Object.values(this.children).forEach((child: Block<Props>) => {
+      if (Array.isArray(child)) {
+        child.map((item) => {
+          const stub = fragment.content.querySelector(`[data-id="${item.id}"]`);
+          if (!stub) return;
+
+          stub.replaceWith(item.getContent()!);
+        });
+        return;
+      }
       const stub = fragment.content.querySelector(`[data-id="${child.id}"]`) as HTMLElement;
-
-      stub.replaceWith(child.getContent());
+      if (!stub) return;
+      stub.replaceWith(child.getContent()!);
     });
 
     return fragment.content;
   }
 
-  _createDocumentElement(tagName: string) {
+  private _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
   }
 
@@ -181,7 +195,14 @@ export default class Block {
     return <HTMLElement> this.element;
   }
 
-  protected initChildren(props = {}) {
-    this.props = props;
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  protected initChildren() {}
+
+  hide() {
+    this._element?.remove();
+  }
+
+  show() {
+    this.getContent().style.display = 'block';
   }
 }

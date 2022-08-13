@@ -9,7 +9,7 @@ interface Props {
   };
 }
 
-export class Button extends Block {
+export class Button extends Block<Props> {
   constructor(props: Props) {
     super(props);
   }

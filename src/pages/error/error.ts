@@ -9,15 +9,14 @@ export interface ErrorPage {
   link_text: string;
 }
 
-export class Error extends Block {
-  // eslint-disable-next-line no-useless-constructor
+export class Error extends Block<ErrorPage> {
   constructor(props: ErrorPage) {
     super(props);
   }
 
-  protected initChildren(props: ErrorPage) {
+  protected initChildren() {
     this.children.link = new Link({
-      text: props.link_text,
+      text: this.props.link_text,
       className: 'link-button',
     });
   }

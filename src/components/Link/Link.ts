@@ -11,7 +11,7 @@ interface Props {
   }
 }
 
-export class Link extends Block {
+export class Link extends Block<Props> {
   constructor(props: Props) {
     super(props);
   }

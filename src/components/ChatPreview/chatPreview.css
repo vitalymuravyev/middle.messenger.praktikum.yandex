@@ -7,7 +7,7 @@
 }
 
 .chat-preview:hover {
-  background-color: #e4edfd;
+  background-color: var(--chats-hover);
   cursor: pointer;
 }
 

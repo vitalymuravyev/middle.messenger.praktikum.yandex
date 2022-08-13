@@ -2,58 +2,66 @@ import Block from '../../core/Block';
 import template from './profile.hbs';
 import * as styles from './profile.css';
 import { Link } from '../../components/Link';
-import renderDom from '../../core/renderDom';
-import { Auth } from '../auth';
 import { UserInfoItem } from '../../components/UserInfoItem';
+import AuthController from '../../core/controllers/authController';
+import { Avatar } from '../../components/Avatar';
+import { Router } from '../../core/router/Router';
 
 export interface User {
   email: string;
   login: string;
-  name: string;
+  first_name: string;
   second_name: string;
   display_name: string;
   phone: string;
+  avatar: string;
 }
 
-interface Props {
-  user: User;
-}
-
-export class Profile extends Block {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(props: Props) {
+export class Profile extends Block<User> {
+  constructor(props: User) {
     super(props);
   }
 
-  protected initChildren({ user }: Props) {
+  protected initChildren() {
+    this.children.avatar = new Avatar({
+      link: `https://ya-praktikum.tech/api/v2/resources${this.props?.avatar}`,
+      events: {
+        click: (evt) => {
+          evt.preventDefault();
+          const router = new Router('#app');
+          router.go('/settings/change-avatar');
+        },
+      },
+    });
+
     this.children.userEmail = new UserInfoItem({
-      name: 'Почта',
-      value: user.email,
+      title: 'Почта',
+      value: this.props?.email,
     });
 
     this.children.userLogin = new UserInfoItem({
-      name: 'Логин',
-      value: user.login,
+      title: 'Логин',
+      value: this.props?.login,
     });
 
     this.children.userName = new UserInfoItem({
-      name: 'Имя',
-      value: user.name,
+      title: 'Имя',
+      value: this.props?.first_name,
     });
 
     this.children.userSurname = new UserInfoItem({
-      name: 'Фамилия',
-      value: user.second_name,
+      title: 'Фамилия',
+      value: this.props?.second_name,
     });
 
     this.children.userNickname = new UserInfoItem({
-      name: 'Имя в чате',
-      value: user.display_name,
+      title: 'Имя в чате',
+      value: this.props?.display_name,
     });
 
     this.children.userPhone = new UserInfoItem({
-      name: 'Телефон',
-      value: user.phone,
+      title: 'Телефон',
+      value: this.props?.phone,
     });
 
     this.children.linkChangeData = new Link({
@@ -62,7 +70,8 @@ export class Profile extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          // renderDom('#app', new Auth())
+          const router = new Router('#app');
+          router.go('/settings/change-settings');
         },
       },
     });
@@ -73,7 +82,20 @@ export class Profile extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          // renderDom('#app', new Auth())
+          const router = new Router('#app');
+          router.go('/settings/change-password');
+        },
+      },
+    });
+
+    this.children.linkBack = new Link({
+      text: 'К чатам',
+      className: 'profile-actions_item',
+      events: {
+        click: (e) => {
+          e.preventDefault();
+          const router = new Router('#app');
+          router.go('/messenger');
         },
       },
     });
@@ -84,7 +106,7 @@ export class Profile extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          renderDom('#app', new Auth());
+          AuthController.logout();
         },
       },
     });

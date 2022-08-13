@@ -5,16 +5,16 @@ import Block from '../../core/Block';
 import * as styles from './auth.css';
 import { Input } from '../../components/Input';
 import { Link } from '../../components/Link';
-import renderDom from '../../core/renderDom';
-import { Singup } from '../singup';
-import { Chat } from '../chat';
 import { logFormData } from '../../utils/logFormData';
 import { Label } from '../../components/Label';
 import {
-  hideError, isFormValid, showError, validate,
+  hideError, isFormValid, Rule, showError, validate,
 } from '../../utils/validator';
+import { Router } from '../../core/router/Router';
+import AuthController from '../../core/controllers/authController';
+import { ILoginData } from '../../types/auth';
 
-export class Auth extends Block {
+export class Auth extends Block<any> {
   protected initChildren(): void {
     this.children.inputLogin = new Input({
       name: 'login',
@@ -22,7 +22,7 @@ export class Auth extends Block {
       text: 'Логин',
       events: {
         blur: (evt) => {
-          validate('login', evt.target as HTMLInputElement);
+          validate(Rule.LOGIN, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -41,7 +41,7 @@ export class Auth extends Block {
       text: 'Пароль',
       events: {
         blur: (evt) => {
-          validate('password', evt.target as HTMLInputElement);
+          validate(Rule.PASSWORD, evt.target as HTMLInputElement);
         },
         focus: () => {
           hideError();
@@ -58,12 +58,12 @@ export class Auth extends Block {
       text: 'Вход',
       events: {
         click: (evt) => {
-          const isError = (document.querySelector('.input-error') as HTMLElement).textContent;
+          evt.preventDefault();
+          const isError = (document.querySelector('.input-error') as HTMLElement)?.textContent;
           if (isFormValid('.form-wrapper') && !isError) {
-            logFormData('.form-wrapper');
-            renderDom('#app', new Chat());
+            const data = logFormData('.form-wrapper') as unknown as ILoginData;
+            AuthController.login(data);
           } else {
-            evt.preventDefault();
             showError('Все поля должны быть заполнены');
           }
         },
@@ -76,7 +76,8 @@ export class Auth extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          renderDom('#app', new Singup());
+          const router = new Router('#app');
+          router.go('/sign-up');
         },
       },
     });
