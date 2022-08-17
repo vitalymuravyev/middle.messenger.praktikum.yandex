@@ -2,6 +2,7 @@ import Block from '../Block';
 import { Router } from './Router';
 import { expect } from 'chai';
 import { Route } from './Route';
+import * as sinon from 'sinon';
 
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
@@ -42,20 +43,34 @@ class Page2 extends Block<any> {
   }
 }
 
-const page1 = new Page1({});
-const page2 = new Page2({});
-
 describe('Router', () => {
   const router = new Router('#app');
   router.start();
 
   it('Should add "/"', () => {
-    router.use('/', page1);
+    router.use('/', Page1);
     expect(router.getRoute('/')).instanceOf(Route);
   });
 
   it('Should add "/page"', () => {
-    router.use('/page', page2);
+    router.use('/page', Page2);
     expect(router.getRoute('/page')).instanceOf(Route);
   });
+
+  it('Should go to "/page"', () => {
+    router.go('/page');
+    expect(router._currentRoute?._pathname).to.equal('/page')
+  })
+
+  it('Should go back', () => {
+    const backSpy = sinon.spy(global.window.history, 'back');
+    router.back();
+    expect(backSpy.called).to.be.true;
+  })
+
+  it('Should go forward', () => {
+    const forwardSpy = sinon.spy(global.window.history, 'forward');
+    router.forward();
+    expect(forwardSpy.called).to.be.true;
+  })
 })
