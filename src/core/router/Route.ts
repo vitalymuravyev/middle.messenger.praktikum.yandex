@@ -37,7 +37,7 @@ export class Route<Props extends {}> {
 
   render(): void {
     if (!this._block) {
-      this._block = this._blockClass(this._props);
+      this._block = new this._blockClass(this._props);
     }
     renderDom(this._props.rootQuery, this._block as InstanceType<typeof Block>);
   }
