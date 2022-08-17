@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import template from './chatOptions.hbs';
+import * as template from './chatOptions.hbs';
 import { Button } from '../Button';
 import ChatsController from '../../core/controllers/chatsController';
 import { ChatInput } from '../ChatInput';

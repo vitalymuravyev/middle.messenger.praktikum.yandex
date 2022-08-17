@@ -1,4 +1,4 @@
-import template from './auth.hbs';
+import * as template from './auth.hbs';
 import { Button } from '../../components/Button';
 import Block from '../../core/Block';
 

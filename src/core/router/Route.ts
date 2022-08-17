@@ -2,7 +2,7 @@ import renderDom from '../renderDom';
 import Block from '../Block';
 import { isEqualString } from '../../utils/isEqualString';
 
-export class Route<Props extends {}> {
+export class Route<Props extends {rootQuery: string}> {
   _pathname: string;
 
   _block: InstanceType<typeof Block> | null;

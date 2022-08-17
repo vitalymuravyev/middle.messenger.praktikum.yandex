@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import template from './userInfoItem.hbs';
+import * as template from './userInfoItem.hbs';
 import * as styles from './userInfoItem.css';
 
 interface Props {

@@ -1,5 +1,5 @@
 import Block from '../../../core/Block';
-import template from './changeAvatar.hbs';
+import * as template from './changeAvatar.hbs';
 import { Button } from '../../../components/Button';
 import UserDataController from '../../../core/controllers/userDataController';
 import { Link } from '../../../components/Link';

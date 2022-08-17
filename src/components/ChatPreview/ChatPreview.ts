@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import template from './chatPreview.hbs';
+import * as template from './chatPreview.hbs';
 import * as styles from './chatPreview.css';
 
 interface Props {
