@@ -12,4 +12,8 @@
 
 Деплой на Heroku: https://secure-atoll-20939.herokuapp.com/
 
+
 Спринт 4: тесты, переход на вебпак, деплой на Heroku
+
+Ссылка на ПР спринта 4: [#4](https://github.com/vitalymuravyev/middle.messenger.praktikum.yandex/pull/4)
+
