@@ -11,4 +11,4 @@
 
 Спринт 3: роутинг, минимальный набор API
 
-Ссылка на ПР спринта 3: [#3](https://github.com/vitalymuravyev/middle.messenger.praktikum.yandex/pull/3)
+Ссылка на ПР спринта 4: [#4](https://github.com/vitalymuravyev/middle.messenger.praktikum.yandex/pull/4)
