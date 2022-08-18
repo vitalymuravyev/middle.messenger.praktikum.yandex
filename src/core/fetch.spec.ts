@@ -1,5 +1,5 @@
+import { expect } from 'chai';
 import { HTTPTransport } from './fetch';
-import { expect } from "chai";
 
 global.XMLHttpRequest = require('xhr2');
 
@@ -23,4 +23,4 @@ describe('Fetch', () => {
     const result = await fetch.delete('/delete', {});
     expect(result.statusText).equals('OK');
   });
-})
+});

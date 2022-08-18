@@ -4,9 +4,14 @@
   "description": "Учебный проект курса middle frontend",
   "scripts": {
     "dev": "webpack  --mode=development --progress  && webpack serve",
-    "build": "parcel build src/index.html",
+    "build": "webpack --mode=production",
     "start": "npm run build && node app.js",
-    "test": "./node_modules/.bin/mocha -r mock-local-storage"
+    "test": "./node_modules/.bin/mocha -r mock-local-storage",
+    "eslint": "eslint . --ext .ts,.js",
+    "eslint:fix": "eslint . --ext .ts,.js --fix",
+    "validate": "npm-run-all --parallel test eslint",
+    "precommit": "npm run validate",
+    "prepush": "npm run validate"
   },
   "repository": {
     "type": "git",
@@ -34,11 +39,14 @@
     "css-loader": "^6.7.1",
     "eslint": "8.19.0",
     "eslint-config-airbnb": "19.0.4",
+    "eslint-plugin-react": "^7.30.1",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
     "jsdom": "20.0.0",
     "mini-css-extract-plugin": "^2.6.1",
     "mocha": "10.0.0",
     "mock-local-storage": "^1.1.23",
+    "npm-run-all": "^4.1.5",
     "parcel": "2.6.2",
     "postcss": "8.4.14",
     "postcss-nested": "5.0.6",
@@ -72,5 +80,11 @@
   ],
   "engines": {
     "node": ">=12.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit",
+      "pre-push": "npm run prepush"
+    }
   }
 }

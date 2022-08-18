@@ -1,15 +1,16 @@
 import * as Handlebars from 'handlebars';
-import Block from "./Block";
 import { expect } from 'chai';
+import Block from './Block';
 
 const jsdom = require('jsdom');
+
 const { JSDOM } = jsdom;
 
 const dom = new JSDOM(
   '<html><body><div id="app"></div></body></html>',
   { url: 'http://localhost' },
   { runSripts: 'dangerously' },
-)
+);
 
 global.document = dom.window.document;
 global.window = dom.window;
@@ -33,16 +34,16 @@ class Component extends Block<Props> {
 }
 
 describe('Component', () => {
-  const component = new Component({text: 'Test'});
+  const component = new Component({ text: 'Test' });
 
   it('render content', () => {
     expect(component.getContent().innerHTML).equals('Test');
-  })
+  });
 
   it('change content', () => {
     component.setProps({
       text: 'Changed text',
-    })
+    });
     expect(component.getContent().innerHTML).equals('Changed text');
-  })
-})
+  });
+});

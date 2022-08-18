@@ -17,7 +17,7 @@ interface IOptions {
 export class HTTPTransport {
   private _BASE_URL: string;
 
-  constructor(baseurl: string = 'https://ya-praktikum.tech/api/v2') {
+  constructor(baseurl = 'https://ya-praktikum.tech/api/v2') {
     this._BASE_URL = baseurl;
   }
 
