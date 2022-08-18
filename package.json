@@ -11,7 +11,8 @@
     "eslint:fix": "eslint . --ext .ts,.js --fix",
     "validate": "npm-run-all --parallel test eslint",
     "precommit": "npm run validate",
-    "prepush": "npm run validate"
+    "prepush": "npm run validate",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -41,7 +42,7 @@
     "eslint-config-airbnb": "19.0.4",
     "eslint-plugin-react": "^7.30.1",
     "html-webpack-plugin": "^5.5.0",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "jsdom": "20.0.0",
     "mini-css-extract-plugin": "^2.6.1",
     "mocha": "10.0.0",
