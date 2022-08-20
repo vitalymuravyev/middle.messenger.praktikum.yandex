@@ -12,6 +12,8 @@ import { ChatOptions } from '../../components/ChatOptions';
 import { Message } from '../../components/Message';
 import { IChatInfo, IMessageData } from '../../types/chats';
 import { ICreateChat } from '../../core/api/chatsAPI';
+import AuthController from '../../core/controllers/authController';
+// import store from '../../core/store';
 
 interface Props {
   chatsStore: any,
@@ -123,6 +125,10 @@ export class Chat extends Block<Props> {
   }
 
   protected render(): DocumentFragment {
+    if (localStorage.getItem('active') && !this.props.chatsStore) {
+      ChatsController.getChats();
+      AuthController.getUser();
+    }
     return this.compile(template, { styles });
   }
 }

@@ -113,6 +113,9 @@ export class Profile extends Block<User> {
   }
 
   render(): DocumentFragment {
+    if (localStorage.getItem('active') && !this.props.email) {
+      AuthController.getUser();
+    }
     return this.compile(template, { ...this.props, styles });
   }
 }
