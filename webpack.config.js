@@ -13,21 +13,20 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
-
   },
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
     compress: true,
-    port: 4000,
+    port: 3000,
     hot: true,
     historyApiFallback: true,
   },
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/i,
+        test: /\.ts$/i,
         loader: 'ts-loader',
       },
       {
@@ -47,6 +46,7 @@ module.exports = {
             options: {},
           },
           'css-loader',
+          'postcss-loader'
         ]
       }
     ]
