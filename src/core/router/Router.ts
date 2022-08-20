@@ -46,6 +46,7 @@ export class Router {
 
     if (localStorage.getItem('active') && this._redirectPath.includes(window.location.pathname)) {
       this._onRoute('/messenger');
+      this.history.pushState({}, '', '/messenger');
     }
   }
 
