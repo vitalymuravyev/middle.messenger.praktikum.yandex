@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import template from './chat.hbs';
+import * as template from './chat.hbs';
 import * as styles from './chat.css';
 import { Link } from '../../components/Link';
 import { ChatPreview } from '../../components/ChatPreview';
@@ -11,6 +11,9 @@ import ChatsController from '../../core/controllers/chatsController';
 import { ChatOptions } from '../../components/ChatOptions';
 import { Message } from '../../components/Message';
 import { IChatInfo, IMessageData } from '../../types/chats';
+import { ICreateChat } from '../../core/api/chatsAPI';
+import AuthController from '../../core/controllers/authController';
+// import store from '../../core/store';
 
 interface Props {
   chatsStore: any,
@@ -107,7 +110,7 @@ export class Chat extends Block<Props> {
           evt.preventDefault();
           const data = logFormData('.add-chat');
           if (data?.title) {
-            ChatsController.createChat(data);
+            ChatsController.createChat(data as unknown as ICreateChat);
           }
         },
       },
@@ -122,6 +125,10 @@ export class Chat extends Block<Props> {
   }
 
   protected render(): DocumentFragment {
+    if (localStorage.getItem('active') && !this.props.chatsStore) {
+      ChatsController.getChats();
+      AuthController.getUser();
+    }
     return this.compile(template, { styles });
   }
 }

@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import template from './error.hbs';
+import * as template from './error.hbs';
 import * as styles from './error.css';
 import { Link } from '../../components/Link';
 

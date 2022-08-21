@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import template from './link.hbs';
+import * as template from './link.hbs';
 import * as styles from './link.css';
 
 interface Props {

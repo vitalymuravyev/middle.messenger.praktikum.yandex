@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import template from './profile.hbs';
+import * as template from './profile.hbs';
 import * as styles from './profile.css';
 import { Link } from '../../components/Link';
 import { UserInfoItem } from '../../components/UserInfoItem';
@@ -113,6 +113,9 @@ export class Profile extends Block<User> {
   }
 
   render(): DocumentFragment {
+    if (localStorage.getItem('active') && !this.props.email) {
+      AuthController.getUser();
+    }
     return this.compile(template, { ...this.props, styles });
   }
 }

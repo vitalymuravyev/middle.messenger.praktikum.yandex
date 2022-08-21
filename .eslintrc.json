@@ -50,6 +50,10 @@
     "no-constructor-return": "off",
     "no-restricted-syntax": "warn",
     "consistent-return": "warn",
-    "radix": "off"
+    "radix": "off",
+    "max-classes-per-file": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "no-prototype-builtins": "warn",
+    "no-unused-expressions": "warn"
   }
 }

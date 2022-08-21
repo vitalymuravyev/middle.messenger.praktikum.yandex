@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import template from './avatar.hbs';
+import * as template from './avatar.hbs';
 
 interface Props {
   link: string;

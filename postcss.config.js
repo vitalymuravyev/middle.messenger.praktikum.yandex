@@ -1,5 +1,5 @@
 module.exports = {
-  syntax: 'postcss-scss',
+  syntax: 'postcss',
   plugins: [
     require('autoprefixer'),
     require('postcss-nested'),

@@ -1,5 +1,5 @@
 import Block from '../../../core/Block';
-import template from './changeSettings.hbs';
+import * as template from './changeSettings.hbs';
 import { Label } from '../../../components/Label';
 import { Input } from '../../../components/Input';
 import {

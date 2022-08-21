@@ -1,6 +1,6 @@
 import Block from './Block';
 
-function renderDom<T extends {}>(selector: string, component: Block<T>) {
+function renderDom<T extends object>(selector: string, component: Block<T>) {
   const root = document.querySelector(selector);
 
   if (!root) {

@@ -15,7 +15,11 @@ interface IOptions {
 }
 
 export class HTTPTransport {
-  private _BASE_URL = 'https://ya-praktikum.tech/api/v2';
+  private _BASE_URL: string;
+
+  constructor(baseurl = 'https://ya-praktikum.tech/api/v2') {
+    this._BASE_URL = baseurl;
+  }
 
   get = (url: string, options: IOptions): Promise<XMLHttpRequest> => {
     if (options && options.data) {

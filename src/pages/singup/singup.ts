@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import template from './singup.hbs';
+import * as template from './singup.hbs';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { Link } from '../../components/Link';
@@ -10,6 +10,7 @@ import {
 } from '../../utils/validator';
 import { Router } from '../../core/router/Router';
 import AuthController from '../../core/controllers/authController';
+import { IUserSignup } from '../../types/auth';
 
 export class Singup extends Block<any> {
   protected initChildren() {
@@ -158,7 +159,7 @@ export class Singup extends Block<any> {
           const isError = (document.querySelector('.input-error') as HTMLElement)?.textContent;
           if (isFormValid('.form-wrapper') && !isError) {
             const data = logFormData('.form-wrapper');
-            AuthController.signup(data);
+            AuthController.signup(data as unknown as IUserSignup);
           } else {
             showError('Все поля должны быть заполнены');
           }
